@@ -253,6 +253,9 @@ MachineAssemblyObject YulStack::assemble(Machine _machine)
 	{
 	case Machine::EVM:
 		return assembleWithDeployed().first;
+	case Machine::TVM:
+		// TODO: Implement TVM assembly
+		unreachable();
 	}
 	unreachable();
 }
