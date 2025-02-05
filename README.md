@@ -2,7 +2,7 @@
 
 This wants to become a Solidity language compiler for TON (The Open Network) blockchain; it is based on original Ethereum codebase. It is crucial to preserve as much of original semantics and syntax as possible to allow for easy porting of existing Ethereum Solidity code to TON TVM, preferably without changes. Of course the Yul Assembler code will be different.
 
-Separately, there will a new project started from scratch to attempt to implement an LL(1) CoCo/R grammar for Solidity matching the original Ethereum Solidity grammar with regard to high level syntax and not the VM assemblers dialects syntax. It is uncertain that this LL(1) goal is achievable.
+Separately, there will a new project [ton-solidity-cocor](https://github.com/ton-solidity/ton-solidity-cocor) started from scratch to attempt to implement an LL(1) CoCo/R grammar for Solidity matching the original Ethereum Solidity grammar with regard to high level syntax and not the VM assemblers dialects syntax. It is uncertain that this LL(1) goal is achievable.
 
 * <i>Project status:</i> Work in progress.
 * <i>Home page:</i> https://www.ton-solidity.org/
