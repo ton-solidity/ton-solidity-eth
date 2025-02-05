@@ -187,4 +187,6 @@ private:
 	std::shared_ptr<ObjectOptimizer> m_objectOptimizer;
 };
 
+typedef YulStack::Machine Machine;
+
 }
