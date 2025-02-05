@@ -1,6 +1,6 @@
-# TON Soliditu doc
+# TON Solidity doc
 
-Adding support for a new command line option to specify the target machine. The option is being added to the `solc` compiler interface.
+Added support for a new command line option to specify the target machine. The option has been added to the `solc` compiler interface.
 
 The new option is `--machine` with the following characteristics:
 
