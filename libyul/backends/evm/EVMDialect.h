@@ -16,12 +16,12 @@
 */
 // SPDX-License-Identifier: GPL-3.0
 /**
- * Yul dialects for EVM.
+ * VM assembler language implementation.
  */
 
 #pragma once
 
-#include <libyul/Dialect.h>
+#include <libyul/Dialect.h> 
 
 #include <libyul/backends/evm/AbstractAssembly.h>
 #include <libyul/ASTForward.h>
@@ -46,7 +46,7 @@ struct BuiltinContext
 	std::map<std::string, AbstractAssembly::SubID> subIDs;
 };
 
-struct BuiltinFunctionForEVM: public BuiltinFunction
+struct BuiltinFunctionForVM: public BuiltinFunction
 {
 	std::optional<evmasm::Instruction> instruction;
 	/// Function to generate code for the given function call and append it to the abstract
@@ -62,28 +62,28 @@ struct BuiltinFunctionForEVM: public BuiltinFunction
  * The main difference is that the builtin functions take an AbstractAssembly for the
  * code generation.
  */
-struct EVMDialect: public Dialect
+struct VMAssemblerLanguage: public Dialect
 {
 	/// Constructor, should only be used internally. Use the factory functions below.
 	EVMDialect(langutil::EVMVersion _evmVersion, std::optional<uint8_t> _eofVersion, bool _objectAccess);
 
 	/// @returns the builtin function of the given name or a nullptr if it is not a builtin function.
-	BuiltinFunctionForEVM const* builtin(YulName _name) const override;
+	BuiltinFunctionForVM const* builtin(YulName _name) const override;
 
 	/// @returns true if the identifier is reserved. This includes the builtins too.
 	bool reservedIdentifier(YulName _name) const override;
 
-	BuiltinFunctionForEVM const* discardFunction() const override { return builtin("pop"_yulname); }
-	BuiltinFunctionForEVM const* equalityFunction() const override { return builtin("eq"_yulname); }
-	BuiltinFunctionForEVM const* booleanNegationFunction() const override { return builtin("iszero"_yulname); }
-	BuiltinFunctionForEVM const* memoryStoreFunction() const override { return builtin("mstore"_yulname); }
-	BuiltinFunctionForEVM const* memoryLoadFunction() const override { return builtin("mload"_yulname); }
-	BuiltinFunctionForEVM const* storageStoreFunction() const override { return builtin("sstore"_yulname); }
-	BuiltinFunctionForEVM const* storageLoadFunction() const override { return builtin("sload"_yulname); }
+	BuiltinFunctionForVM const* discardFunction() const override { return builtin("pop"_yulname); }
+	BuiltinFunctionForVM const* equalityFunction() const override { return builtin("eq"_yulname); }
+	BuiltinFunctionForVM const* booleanNegationFunction() const override { return builtin("iszero"_yulname); }
+	BuiltinFunctionForVM const* memoryStoreFunction() const override { return builtin("mstore"_yulname); }
+	BuiltinFunctionForVM const* memoryLoadFunction() const override { return builtin("mload"_yulname); }
+	BuiltinFunctionForVM const* storageStoreFunction() const override { return builtin("sstore"_yulname); }
+	BuiltinFunctionForVM const* storageLoadFunction() const override { return builtin("sload"_yulname); }
 	YulName hashFunction() const override { return "keccak256"_yulname; }
 
-	static EVMDialect const& strictAssemblyForEVM(langutil::EVMVersion _evmVersion, std::optional<uint8_t> _eofVersion);
-	static EVMDialect const& strictAssemblyForEVMObjects(langutil::EVMVersion _evmVersion, std::optional<uint8_t> _eofVersion);
+	static VMAssemblerLanguage const& strictAssemblyForEVM(langutil::EVMVersion _evmVersion, std::optional<uint8_t> _eofVersion);
+	static VMAssemblerLanguage const& strictAssemblyForEVMObjects(langutil::EVMVersion _evmVersion, std::optional<uint8_t> _eofVersion);
 
 	langutil::EVMVersion evmVersion() const { return m_evmVersion; }
 	std::optional<uint8_t> eofVersion() const { return m_eofVersion; }
@@ -93,13 +93,13 @@ struct EVMDialect: public Dialect
 	static SideEffects sideEffectsOfInstruction(evmasm::Instruction _instruction);
 
 protected:
-	BuiltinFunctionForEVM const* verbatimFunction(size_t _arguments, size_t _returnVariables) const;
+	BuiltinFunctionForVM const* verbatimFunction(size_t _arguments, size_t _returnVariables) const;
 
 	bool const m_objectAccess;
 	langutil::EVMVersion const m_evmVersion;
 	std::optional<uint8_t> m_eofVersion;
-	std::map<YulName, BuiltinFunctionForEVM> m_functions;
-	std::map<std::pair<size_t, size_t>, std::shared_ptr<BuiltinFunctionForEVM const>> mutable m_verbatimFunctions;
+	std::map<YulName, BuiltinFunctionForVM> m_functions;
+	std::map<std::pair<size_t, size_t>, std::shared_ptr<BuiltinFunctionForVM const>> mutable m_verbatimFunctions;
 	std::set<YulName> m_reserved;
 };
 
