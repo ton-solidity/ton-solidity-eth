@@ -358,7 +358,7 @@ std::regex const& verbatimPattern()
 }
 
 
-EVMDialect::EVMDialect(langutil::EVMVersion _evmVersion, std::optional<uint8_t> _eofVersion, bool _objectAccess):
+VMAssemblerLanguage::VMAssemblerLanguage(langutil::EVMVersion _evmVersion, std::optional<uint8_t> _eofVersion, bool _objectAccess):
 	m_objectAccess(_objectAccess),
 	m_evmVersion(_evmVersion),
 	m_eofVersion(_eofVersion),

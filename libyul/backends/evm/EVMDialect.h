@@ -65,7 +65,7 @@ struct BuiltinFunctionForVM: public BuiltinFunction
 struct VMAssemblerLanguage: public Dialect
 {
 	/// Constructor, should only be used internally. Use the factory functions below.
-	EVMDialect(langutil::EVMVersion _evmVersion, std::optional<uint8_t> _eofVersion, bool _objectAccess);
+	VMAssemblerLanguage(langutil::EVMVersion _evmVersion, std::optional<uint8_t> _eofVersion, bool _objectAccess);
 
 	/// @returns the builtin function of the given name or a nullptr if it is not a builtin function.
 	BuiltinFunctionForVM const* builtin(YulName _name) const override;
