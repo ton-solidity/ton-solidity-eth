@@ -216,6 +216,10 @@ public:
 	/// Must be set before parsing.
 	void setOptimiserSettings(OptimiserSettings _settings);
 
+	/// Sets the target machine for code generation.
+	/// Must be set before parsing.
+	void setTargetMachine(yul::YulStack::Machine _targetMachine);
+
 	/// Sets whether to strip revert strings, add additional strings or do nothing at all.
 	void setRevertStringBehaviour(RevertStrings _revertStrings);
 

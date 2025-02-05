@@ -1234,7 +1234,8 @@ void CommandLineInterface::assembleYul(yul::YulStack::Language _language)
 			m_options.optimiserSettings(),
 			m_options.output.debugInfoSelection.has_value() ?
 				m_options.output.debugInfoSelection.value() :
-				DebugInfoSelection::Default()
+				DebugInfoSelection::Default(),
+			m_options.output.targetMachine
 		);
 
 		if (!stack.parseAndAnalyze(src.first, src.second))
