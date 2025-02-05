@@ -49,20 +49,20 @@ class VMMachineAndVersion:
 public:
 	VMMachineAndVersion() = default;
 
-	static EVMVersion homestead() { return {Version::Homestead}; }
-	static EVMVersion tangerineWhistle() { return {Version::TangerineWhistle}; }
-	static EVMVersion spuriousDragon() { return {Version::SpuriousDragon}; }
-	static EVMVersion byzantium() { return {Version::Byzantium}; }
-	static EVMVersion constantinople() { return {Version::Constantinople}; }
-	static EVMVersion petersburg() { return {Version::Petersburg}; }
-	static EVMVersion istanbul() { return {Version::Istanbul}; }
-	static EVMVersion berlin() { return {Version::Berlin}; }
-	static EVMVersion london() { return {Version::London}; }
-	static EVMVersion paris() { return {Version::Paris}; }
-	static EVMVersion shanghai() { return {Version::Shanghai}; }
-	static EVMVersion cancun() { return {Version::Cancun}; }
-	static EVMVersion prague() { return {Version::Prague}; }
-	static EVMVersion tvmDefault() { return {Version::TVMDefault}; }
+	static VMMachineAndVersion homestead() { return {Version::Homestead}; }
+	static VMMachineAndVersion tangerineWhistle() { return {Version::TangerineWhistle}; }
+	static VMMachineAndVersion spuriousDragon() { return {Version::SpuriousDragon}; }
+	static VMMachineAndVersion byzantium() { return {Version::Byzantium}; }
+	static VMMachineAndVersion constantinople() { return {Version::Constantinople}; }
+	static VMMachineAndVersion petersburg() { return {Version::Petersburg}; }
+	static VMMachineAndVersion istanbul() { return {Version::Istanbul}; }
+	static VMMachineAndVersion berlin() { return {Version::Berlin}; }
+	static VMMachineAndVersion london() { return {Version::London}; }
+	static VMMachineAndVersion paris() { return {Version::Paris}; }
+	static VMMachineAndVersion shanghai() { return {Version::Shanghai}; }
+	static VMMachineAndVersion cancun() { return {Version::Cancun}; }
+	static VMMachineAndVersion prague() { return {Version::Prague}; }
+	static VMMachineAndVersion tvmDefault() { return {Version::TVMDefault}; }
 
 	static std::optional<VMMachineAndVersion> fromString(std::string const& _version)
 	{
