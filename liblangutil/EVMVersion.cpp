@@ -16,7 +16,8 @@
 */
 // SPDX-License-Identifier: GPL-3.0
 /**
- * VM machine and version.
+ * Virtual Machine type (EVM/TVM) and version specification.
+ * Handles both the machine type and version capabilities for code generation.
  */
 
 #include <liblangutil/VMMachineAndVersion.h>

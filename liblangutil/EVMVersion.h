@@ -16,7 +16,8 @@
 */
 // SPDX-License-Identifier: GPL-3.0
 /**
- * VM machine and version.
+ * Virtual Machine type (EVM/TVM) and version specification.
+ * Handles both the machine type and version capabilities for code generation.
  */
 
 #pragma once
@@ -127,10 +128,14 @@ public:
 	bool hasBlobHash() const { return *this >= cancun(); }
 	bool hasMcopy() const { return *this >= cancun(); }
 	bool supportsTransientStorage() const { return *this >= cancun(); }
+	
+	/// @returns true if this represents a TVM machine type
+	bool isTVM() const { return m_machine == yul::Machine::TVM; }
 
 	bool hasOpcode(evmasm::Instruction _opcode, std::optional<uint8_t> _eofVersion) const;
 	
 	yul::Machine& machine() { return m_machine; }
+	yul::Machine const& machine() const { return m_machine; }
 
 	/// Whether we have to retain the costs for the call opcode itself (false),
 	/// or whether we can just forward easily all remaining gas (true).
