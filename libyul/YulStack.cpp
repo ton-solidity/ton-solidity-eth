@@ -197,14 +197,22 @@ void YulStack::compileEVM(AbstractAssembly& _assembly, bool _optimize) const
 	{
 		case Language::Assembly:
 		case Language::StrictAssembly:
-			dialect = &EVMDialect::strictAssemblyForEVMObjects(m_evmVersion, m_eofVersion);
+			if (m_targetMachine == Machine::TVM)
+				// TODO: Implement TVMDialect and TVMObjectCompiler
+				unreachable();
+			else
+				dialect = &EVMDialect::strictAssemblyForEVMObjects(m_evmVersion, m_eofVersion);
 			break;
 		default:
 			yulAssert(false, "Invalid language.");
 			break;
 	}
 
-	EVMObjectCompiler::compile(*m_parserResult, _assembly, *dialect, _optimize, m_eofVersion);
+	if (m_targetMachine == Machine::TVM)
+		// TODO: Implement TVMObjectCompiler
+		unreachable();
+	else
+		EVMObjectCompiler::compile(*m_parserResult, _assembly, *dialect, _optimize, m_eofVersion);
 }
 
 void YulStack::reparse()

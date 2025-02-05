@@ -198,7 +198,7 @@ struct CommandLineOptions
 
 	struct
 	{
-		yul::YulStack::Machine targetMachine = yul::YulStack::Machine::TVM;
+		yul::YulStack::Machine targetMachine = yul::YulStack::Machine::TVM; // Default to TVM
 		yul::YulStack::Language inputLanguage = yul::YulStack::Language::StrictAssembly;
 	} assembly;
 

@@ -118,8 +118,8 @@ static std::string const g_strErrorIds = "error-codes";
 
 static std::set<std::string> const g_machineArgs
 {
-	g_strEVM,
-	g_strTVM
+	g_strTVM, // Default machine
+	g_strEVM
 };
 
 /// Possible arguments to for --yul-dialect
@@ -1299,6 +1299,11 @@ void CommandLineParser::processArgs()
 				m_options.assembly.targetMachine = Machine::TVM;
 			else
 				solThrow(CommandLineValidationError, "Invalid option for --" + g_strMachine + ": " + machine);
+		}
+		else
+		{
+			// Set TVM as default if not specified
+			m_options.assembly.targetMachine = Machine::TVM;
 		}
 		if (m_args.count(g_strYulDialect))
 		{
