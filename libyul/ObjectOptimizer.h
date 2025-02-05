@@ -18,10 +18,9 @@
 
 #pragma once
 
+#include <liblangutil/VMMachineAndVersion.h>
 #include <libyul/ASTForward.h>
 #include <libyul/Object.h>
-
-#include <liblangutil/VMMachineAndVersion.h>
 
 #include <libsolutil/FixedHash.h>
 

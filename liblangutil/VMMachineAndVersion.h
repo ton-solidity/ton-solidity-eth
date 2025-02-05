@@ -40,13 +40,38 @@ namespace solidity::langutil
 {
 
 /**
- * A version specifier of the EVM we want to compile to.
- * Defaults to the latest version deployed on Ethereum Mainnet at the time of compiler release.
+ * A version specifier of the VM we want to compile to.
+ * Defaults to some default TVM. //TODO
  */
 class VMMachineAndVersion:
 	boost::less_than_comparable<VMMachineAndVersion>,
 	boost::equality_comparable<VMMachineAndVersion>
 {
+private:
+	enum class Version {
+		Homestead,
+		TangerineWhistle,
+		SpuriousDragon,
+		Byzantium,
+		Constantinople,
+		Petersburg,
+		Istanbul,
+		Berlin,
+		London,
+		Paris,
+		Shanghai,
+		Cancun,
+		Prague,
+		TVMDefault
+	};
+
+	VMMachineAndVersion(Version _version):
+		m_version(_version),
+		m_machine(_version == Version::TVMDefault ? yul::Machine::TVM : yul::Machine::EVM)
+	{}
+
+	Version m_version = Version::TVMDefault;
+	yul::Machine m_machine = yul::Machine::TVM;
 public:
 	VMMachineAndVersion() = default;
 
@@ -88,8 +113,14 @@ public:
 		return std::nullopt;
 	}
 
-	bool operator==(VMMachineAndVersion const& _other) const { return m_version == _other.m_version; }
-	bool operator<(VMMachineAndVersion const& _other) const { return m_version < _other.m_version; }
+	bool operator==(VMMachineAndVersion const& _other) const {
+		solRequire(m_machine == _other.m_machine, InternalCompilerError, "target machine doesn't match");
+		return m_version == _other.m_version;
+	}
+	bool operator<(VMMachineAndVersion const& _other) const {
+		solRequire(m_machine == _other.m_machine, InternalCompilerError, "target machine doesn't match");
+		return m_version < _other.m_version;
+	}
 
 	std::string name() const
 	{
@@ -128,44 +159,17 @@ public:
 	bool hasBlobHash() const { return *this >= cancun(); }
 	bool hasMcopy() const { return *this >= cancun(); }
 	bool supportsTransientStorage() const { return *this >= cancun(); }
-	
+
 	/// @returns true if this represents a TVM machine type
 	bool isTVM() const { return m_machine == yul::Machine::TVM; }
 
 	bool hasOpcode(evmasm::Instruction _opcode, std::optional<uint8_t> _eofVersion) const;
-	
-	yul::Machine& machine() { return m_machine; }
+
 	yul::Machine const& machine() const { return m_machine; }
 
 	/// Whether we have to retain the costs for the call opcode itself (false),
 	/// or whether we can just forward easily all remaining gas (true).
 	bool canOverchargeGasForCall() const { return *this >= tangerineWhistle(); }
-
-private:
-	enum class Version {
-		Homestead,
-		TangerineWhistle,
-		SpuriousDragon,
-		Byzantium,
-		Constantinople,
-		Petersburg,
-		Istanbul,
-		Berlin,
-		London,
-		Paris,
-		Shanghai,
-		Cancun,
-		Prague,
-		TVMDefault
-	};
-
-	VMMachineAndVersion(Version _version): 
-		m_version(_version),
-		m_machine(_version == Version::TVMDefault ? yul::Machine::TVM : yul::Machine::EVM)
-	{}
-
-	Version m_version = Version::Cancun;
-	yul::Machine m_machine;
 };
 
 }
