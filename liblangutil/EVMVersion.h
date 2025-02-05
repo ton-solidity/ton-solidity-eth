@@ -16,7 +16,7 @@
 */
 // SPDX-License-Identifier: GPL-3.0
 /**
- * EVM versioning.
+ * VM machine and version.
  */
 
 #pragma once
@@ -41,12 +41,12 @@ namespace solidity::langutil
  * A version specifier of the EVM we want to compile to.
  * Defaults to the latest version deployed on Ethereum Mainnet at the time of compiler release.
  */
-class EVMVersion:
-	boost::less_than_comparable<EVMVersion>,
-	boost::equality_comparable<EVMVersion>
+class VMMachineAndVersion:
+	boost::less_than_comparable<VMMachineAndVersion>,
+	boost::equality_comparable<VMMachineAndVersion>
 {
 public:
-	EVMVersion() = default;
+	VMMachineAndVersion() = default;
 
 	static EVMVersion homestead() { return {Version::Homestead}; }
 	static EVMVersion tangerineWhistle() { return {Version::TangerineWhistle}; }
@@ -62,7 +62,7 @@ public:
 	static EVMVersion cancun() { return {Version::Cancun}; }
 	static EVMVersion prague() { return {Version::Prague}; }
 
-	static std::optional<EVMVersion> fromString(std::string const& _version)
+	static std::optional<VMMachineAndVersion> fromString(std::string const& _version)
 	{
 		for (auto const& v: {
 			homestead(),
@@ -84,8 +84,8 @@ public:
 		return std::nullopt;
 	}
 
-	bool operator==(EVMVersion const& _other) const { return m_version == _other.m_version; }
-	bool operator<(EVMVersion const& _other) const { return m_version < _other.m_version; }
+	bool operator==(VMMachineAndVersion const& _other) const { return m_version == _other.m_version; }
+	bool operator<(VMMachineAndVersion const& _other) const { return m_version < _other.m_version; }
 
 	std::string name() const
 	{

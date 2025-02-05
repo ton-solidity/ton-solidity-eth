@@ -16,17 +16,17 @@
 */
 // SPDX-License-Identifier: GPL-3.0
 /**
- * EVM versioning.
+ * VM machine and version.
  */
 
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 #include <libevmasm/Instruction.h>
 
 using namespace solidity;
 using namespace solidity::evmasm;
 using namespace solidity::langutil;
 
-bool EVMVersion::hasOpcode(Instruction _opcode, std::optional<uint8_t> _eofVersion) const
+bool VMMachineAndVersion::hasOpcode(Instruction _opcode, std::optional<uint8_t> _eofVersion) const
 {
 	// EOF version can be only defined since prague
 	assert(!_eofVersion.has_value() || this->m_version >= prague());
