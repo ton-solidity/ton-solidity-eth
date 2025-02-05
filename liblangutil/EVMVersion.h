@@ -62,6 +62,7 @@ public:
 	static EVMVersion shanghai() { return {Version::Shanghai}; }
 	static EVMVersion cancun() { return {Version::Cancun}; }
 	static EVMVersion prague() { return {Version::Prague}; }
+	static EVMVersion tvmDefault() { return {Version::TVMDefault}; }
 
 	static std::optional<VMMachineAndVersion> fromString(std::string const& _version)
 	{
@@ -78,7 +79,8 @@ public:
 			paris(),
 			shanghai(),
 			cancun(),
-			prague()
+			prague(),
+			tvmDefault()
 		})
 			if (_version == v.name())
 				return v;
@@ -105,6 +107,7 @@ public:
 		case Version::Shanghai: return "shanghai";
 		case Version::Cancun: return "cancun";
 		case Version::Prague: return "prague";
+		case Version::TVMDefault: return "tvmDefault";
 		}
 		return "INVALID";
 	}
@@ -147,7 +150,8 @@ private:
 		Paris,
 		Shanghai,
 		Cancun,
-		Prague
+		Prague,
+		TVMDefault
 	};
 
 	EVMVersion(Version _version): m_version(_version) {}
