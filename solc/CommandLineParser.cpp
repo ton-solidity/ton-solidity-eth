@@ -46,6 +46,7 @@ static std::string const g_strIncludePath = "include-path";
 static std::string const g_strAssemble = "assemble";
 static std::string const g_strCombinedJson = "combined-json";
 static std::string const g_strEVM = "evm";
+static std::string const g_strTVM = "tvm";
 static std::string const g_strEVMVersion = "evm-version";
 static std::string const g_strEOFVersion = "experimental-eof-version";
 static std::string const g_strViaIR = "via-ir";
@@ -115,9 +116,6 @@ static std::string const g_strColor = "color";
 static std::string const g_strNoColor = "no-color";
 static std::string const g_strErrorIds = "error-codes";
 
-/// Possible arguments to for --machine
-static std::string const g_strTVM = "tvm";
-
 static std::set<std::string> const g_machineArgs
 {
 	g_strEVM,
@@ -127,7 +125,8 @@ static std::set<std::string> const g_machineArgs
 /// Possible arguments to for --yul-dialect
 static std::set<std::string> const g_yulDialectArgs
 {
-	g_strEVM
+	g_strEVM,
+	g_strTVM
 };
 
 /// Possible arguments to for --metadata-hash
