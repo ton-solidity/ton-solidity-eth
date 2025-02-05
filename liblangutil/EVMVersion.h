@@ -26,6 +26,7 @@
 #include <string>
 
 #include <boost/operators.hpp>
+#include <libyul/YulStack.h> // for yul::Machine
 
 
 namespace solidity::evmasm
@@ -125,6 +126,8 @@ public:
 	bool supportsTransientStorage() const { return *this >= cancun(); }
 
 	bool hasOpcode(evmasm::Instruction _opcode, std::optional<uint8_t> _eofVersion) const;
+	
+	yul::Machine& machine() { return m_machine; }
 
 	/// Whether we have to retain the costs for the call opcode itself (false),
 	/// or whether we can just forward easily all remaining gas (true).
@@ -150,6 +153,7 @@ private:
 	EVMVersion(Version _version): m_version(_version) {}
 
 	Version m_version = Version::Cancun;
+	yul::Machine m_machine;
 };
 
 }
