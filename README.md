@@ -1,4 +1,6 @@
-# TON Solidity based on original Ethereum Solidity codebase starting from release eth-sol tag `v0.8.28`
+# ton-solidity-eth
+
+TON Solidity based on original Ethereum Solidity codebase starting from release eth-sol tag `v0.8.28`
 
 This wants to become a Solidity language compiler for TON (The Open Network) blockchain; it is based on original Ethereum codebase. It is crucial to preserve as much of original semantics and syntax as possible to allow for easy porting of existing Ethereum Solidity code to TON TVM, preferably without changes. Of course the Yul Assembler code will be different.
 
