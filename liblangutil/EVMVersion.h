@@ -154,7 +154,10 @@ private:
 		TVMDefault
 	};
 
-	EVMVersion(Version _version): m_version(_version) {}
+	VMMachineAndVersion(Version _version): 
+		m_version(_version),
+		m_machine(_version == Version::TVMDefault ? yul::Machine::TVM : yul::Machine::EVM)
+	{}
 
 	Version m_version = Version::Cancun;
 	yul::Machine m_machine;
