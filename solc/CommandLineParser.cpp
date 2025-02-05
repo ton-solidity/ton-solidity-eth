@@ -116,9 +116,12 @@ static std::string const g_strNoColor = "no-color";
 static std::string const g_strErrorIds = "error-codes";
 
 /// Possible arguments to for --machine
+static std::string const g_strTVM = "tvm";
+
 static std::set<std::string> const g_machineArgs
 {
-	g_strEVM
+	g_strEVM,
+	g_strTVM
 };
 
 /// Possible arguments to for --yul-dialect
@@ -695,7 +698,7 @@ General Information)").c_str(),
 		(
 			g_strMachine.c_str(),
 			po::value<std::string>()->value_name(util::joinHumanReadable(g_machineArgs, ",")),
-			"Target machine in assembly or Yul mode."
+			"Target machine in assembly or Yul mode (evm, tvm). Default is tvm."
 		)
 		(
 			g_strYulDialect.c_str(),
@@ -1293,6 +1296,8 @@ void CommandLineParser::processArgs()
 			std::string machine = m_args[g_strMachine].as<std::string>();
 			if (machine == g_strEVM)
 				m_options.assembly.targetMachine = Machine::EVM;
+			else if (machine == g_strTVM)
+				m_options.assembly.targetMachine = Machine::TVM;
 			else
 				solThrow(CommandLineValidationError, "Invalid option for --" + g_strMachine + ": " + machine);
 		}
