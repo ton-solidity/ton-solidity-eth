@@ -17,7 +17,7 @@
   revert(1, 0)
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // Trace:
 //   RETURNDATACOPY(0, 1, 0)

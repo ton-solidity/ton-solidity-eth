@@ -32,7 +32,7 @@
 
 #include <libyul/Dialect.h>
 #include <libyul/backends/evm/EVMDialect.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 #include <vector>
 #include <functional>
@@ -734,7 +734,7 @@ std::vector<SimplificationRule<Pattern>> simplificationRuleListPart8(
 
 template<class Pattern>
 std::vector<SimplificationRule<Pattern>> evmRuleList(
-	langutil::EVMVersion _evmVersion,
+	langutil::VMMachineAndVersion _evmVersion,
 	Pattern A,
 	Pattern,
 	Pattern,
@@ -804,7 +804,7 @@ std::vector<SimplificationRule<Pattern>> evmRuleList(
 /// arbitrary operations.
 template <class Pattern>
 std::vector<SimplificationRule<Pattern>> simplificationRuleList(
-	std::optional<langutil::EVMVersion> _evmVersion,
+	std::optional<langutil::VMMachineAndVersion> _evmVersion,
 	Pattern A,
 	Pattern B,
 	Pattern C,

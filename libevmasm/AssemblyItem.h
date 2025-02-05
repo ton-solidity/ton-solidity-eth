@@ -114,7 +114,7 @@ public:
 	/// @returns a pair, where the first element is the json-assembly
 	/// item name, where second element is the string representation
 	/// of it's data.
-	std::pair<std::string, std::string> nameAndData(langutil::EVMVersion _evmVersion) const;
+	std::pair<std::string, std::string> nameAndData(langutil::VMMachineAndVersion _evmVersion) const;
 
 	bytes const& verbatimData() const { assertThrow(m_type == VerbatimBytecode, util::Exception, ""); return std::get<2>(*m_verbatimBytecode); }
 
@@ -165,7 +165,7 @@ public:
 	/// @param _precision Whether to return a precise count (which involves
 	///                   counting immutable references which are only set after
 	///                   a call to `assemble()`) or an approx. count.
-	size_t bytesRequired(size_t _addressLength, langutil::EVMVersion _evmVersion, Precision _precision = Precision::Precise) const;
+	size_t bytesRequired(size_t _addressLength, langutil::VMMachineAndVersion _evmVersion, Precision _precision = Precision::Precise) const;
 	size_t arguments() const;
 	size_t returnValues() const;
 	size_t deposit() const { return returnValues() - arguments(); }
@@ -229,7 +229,7 @@ private:
 	mutable std::optional<size_t> m_immutableOccurrences;
 };
 
-inline size_t bytesRequired(AssemblyItems const& _items, size_t _addressLength, langutil::EVMVersion _evmVersion, Precision _precision = Precision::Precise)
+inline size_t bytesRequired(AssemblyItems const& _items, size_t _addressLength, langutil::VMMachineAndVersion _evmVersion, Precision _precision = Precision::Precise)
 {
 	size_t size = 0;
 	for (AssemblyItem const& item: _items)

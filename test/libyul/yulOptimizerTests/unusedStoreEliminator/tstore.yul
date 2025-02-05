@@ -7,7 +7,7 @@
     sstore(x, 20)
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // step: unusedStoreEliminator
 //

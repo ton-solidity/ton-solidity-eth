@@ -10,7 +10,7 @@
   }
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // Trace:
 // Memory dump:

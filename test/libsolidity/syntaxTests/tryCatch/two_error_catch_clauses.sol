@@ -10,6 +10,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // TypeError 1036: (150-205): This try statement already has an "Error" catch clause.

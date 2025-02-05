@@ -8,8 +8,8 @@ set(sources
 	DebugInfoSelection.h
 	ErrorReporter.cpp
 	ErrorReporter.h
-	EVMVersion.h
-	EVMVersion.cpp
+	VMMachineAndVersion.h
+	VMMachineAndVersion.cpp
 	Exceptions.cpp
 	Exceptions.h
 	ParserBase.cpp

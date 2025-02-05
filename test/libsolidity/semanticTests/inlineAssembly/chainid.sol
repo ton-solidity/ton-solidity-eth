@@ -6,6 +6,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=istanbul
+// VMMachineAndVersion: >=istanbul
 // ----
 // f() -> 1

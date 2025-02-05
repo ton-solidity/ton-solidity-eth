@@ -9,7 +9,7 @@ contract C {
 }
 // ====
 // ABIEncoderV1Only: true
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // revertStrings: debug
 // compileViaYul: false
 // ----

@@ -263,7 +263,7 @@ GasMeter::GasConsumption GasMeter::memoryGas(int _stackPosOffset, int _stackPosS
 		}));
 }
 
-unsigned GasMeter::runGas(Instruction _instruction, langutil::EVMVersion _evmVersion)
+unsigned GasMeter::runGas(Instruction _instruction, langutil::VMMachineAndVersion _evmVersion)
 {
 	if (_instruction == Instruction::JUMPDEST)
 		return 1;
@@ -286,7 +286,7 @@ unsigned GasMeter::runGas(Instruction _instruction, langutil::EVMVersion _evmVer
 	util::unreachable();
 }
 
-unsigned GasMeter::pushGas(u256 _value, langutil::EVMVersion _evmVersion)
+unsigned GasMeter::pushGas(u256 _value, langutil::VMMachineAndVersion _evmVersion)
 {
 	return runGas(
 		(_evmVersion.hasPush0() && _value == u256(0)) ? Instruction::PUSH0 : Instruction::PUSH1,
@@ -294,7 +294,7 @@ unsigned GasMeter::pushGas(u256 _value, langutil::EVMVersion _evmVersion)
 	);
 }
 
-u256 GasMeter::dataGas(bytes const& _data, bool _inCreation, langutil::EVMVersion _evmVersion)
+u256 GasMeter::dataGas(bytes const& _data, bool _inCreation, langutil::VMMachineAndVersion _evmVersion)
 {
 	bigint gas = 0;
 	if (_inCreation)
@@ -309,7 +309,7 @@ u256 GasMeter::dataGas(bytes const& _data, bool _inCreation, langutil::EVMVersio
 }
 
 
-u256 GasMeter::dataGas(uint64_t _length, bool _inCreation, langutil::EVMVersion _evmVersion)
+u256 GasMeter::dataGas(uint64_t _length, bool _inCreation, langutil::VMMachineAndVersion _evmVersion)
 {
 	bigint gas = bigint(_length) * (_inCreation ? GasCosts::txDataNonZeroGas(_evmVersion) : GasCosts::createDataGas);
 	assertThrow(gas < bigint(u256(-1)), OptimizerException, "Gas cost exceeds 256 bits.");

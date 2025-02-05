@@ -38,7 +38,7 @@ namespace solidity::frontend
 
 NameAndTypeResolver::NameAndTypeResolver(
 	GlobalContext& _globalContext,
-	langutil::EVMVersion _evmVersion,
+	langutil::VMMachineAndVersion _evmVersion,
 	ErrorReporter& _errorReporter,
 	bool _experimentalSolidity
 ):

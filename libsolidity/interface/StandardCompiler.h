@@ -76,7 +76,7 @@ private:
 		std::map<std::string, std::string> sources;
 		std::map<std::string, Json> jsonSources;
 		std::map<util::h256, std::string> smtLib2Responses;
-		langutil::EVMVersion evmVersion;
+		langutil::VMMachineAndVersion evmVersion;
 		std::optional<uint8_t> eofVersion;
 		std::vector<ImportRemapper::Remapping> remappings;
 		RevertStrings revertStrings = RevertStrings::Default;

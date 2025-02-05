@@ -6,6 +6,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // TypeError 2527: (81-89): Function declared as pure, but this expression (potentially) reads from the environment or state and thus requires "view".

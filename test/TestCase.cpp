@@ -99,7 +99,7 @@ TestCase::TestResult TestCase::checkResult(std::ostream& _stream, const std::str
 EVMVersionRestrictedTestCase::EVMVersionRestrictedTestCase(std::string const& _filename):
 	TestCase(_filename)
 {
-	std::string versionString = m_reader.stringSetting("EVMVersion", "any");
+	std::string versionString = m_reader.stringSetting("VMMachineAndVersion", "any");
 	if (versionString == "any")
 		return;
 
@@ -115,11 +115,11 @@ EVMVersionRestrictedTestCase::EVMVersionRestrictedTestCase(std::string const& _f
 			break;
 
 	versionString = versionString.substr(versionBegin);
-	std::optional<langutil::EVMVersion> version = langutil::EVMVersion::fromString(versionString);
+	std::optional<langutil::VMMachineAndVersion> version = langutil::VMMachineAndVersion::fromString(versionString);
 	if (!version)
 		BOOST_THROW_EXCEPTION(std::runtime_error{"Invalid EVM version: \"" + versionString + "\""});
 
-	langutil::EVMVersion evmVersion = solidity::test::CommonOptions::get().evmVersion();
+	langutil::VMMachineAndVersion evmVersion = solidity::test::CommonOptions::get().evmVersion();
 	bool comparisonResult;
 	if (comparator == ">")
 		comparisonResult = evmVersion > version;

@@ -22,7 +22,7 @@
 
 #include <libyul/optimiser/Suite.h>
 
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 #include <boost/algorithm/string.hpp>
 
@@ -607,7 +607,7 @@ General Information)").c_str(),
 		)
 		(
 			g_strEVMVersion.c_str(),
-			po::value<std::string>()->value_name("version")->default_value(EVMVersion{}.name()),
+			po::value<std::string>()->value_name("version")->default_value(VMMachineAndVersion{}.name()),
 			"Select desired EVM version. Either homestead, tangerineWhistle, spuriousDragon, "
 			"byzantium, constantinople, petersburg, istanbul, berlin, london, paris, shanghai, cancun or prague."
 		)
@@ -1211,7 +1211,7 @@ void CommandLineParser::processArgs()
 	if (m_args.count(g_strEVMVersion))
 	{
 		std::string versionOptionStr = m_args[g_strEVMVersion].as<std::string>();
-		std::optional<langutil::EVMVersion> versionOption = langutil::EVMVersion::fromString(versionOptionStr);
+		std::optional<langutil::VMMachineAndVersion> versionOption = langutil::VMMachineAndVersion::fromString(versionOptionStr);
 		if (!versionOption)
 			solThrow(CommandLineValidationError, "Invalid option for --" + g_strEVMVersion + ": " + versionOptionStr);
 		m_options.output.evmVersion = *versionOption;

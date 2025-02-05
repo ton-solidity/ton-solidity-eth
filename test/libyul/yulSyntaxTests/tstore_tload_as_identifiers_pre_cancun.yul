@@ -3,4 +3,4 @@
     function tload() {}
 }
 // ====
-// EVMVersion: <cancun
+// VMMachineAndVersion: <cancun

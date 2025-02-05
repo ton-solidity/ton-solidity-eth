@@ -21,7 +21,7 @@
  */
 #pragma once
 
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 #include <libsolidity/ast/Types.h>
 
 namespace solidity::frontend
@@ -33,7 +33,7 @@ namespace solidity::frontend
  */
 struct ReturnInfo
 {
-	ReturnInfo(langutil::EVMVersion const& _evmVersion, FunctionType const& _functionType);
+	ReturnInfo(langutil::VMMachineAndVersion const& _evmVersion, FunctionType const& _functionType);
 
 	/// Vector of Type const*, for each return variable. Dynamic types are already replaced if required.
 	TypePointers returnTypes = {};

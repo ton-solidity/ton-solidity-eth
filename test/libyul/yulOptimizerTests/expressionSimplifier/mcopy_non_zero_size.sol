@@ -6,7 +6,7 @@
     return(0, 0x60)
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // step: expressionSimplifier
 //

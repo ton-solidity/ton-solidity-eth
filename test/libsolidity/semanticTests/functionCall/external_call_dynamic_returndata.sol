@@ -17,6 +17,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // dt(uint256): 4 -> 6

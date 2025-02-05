@@ -78,7 +78,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // a() -> 0x00
 // b() -> 0x00

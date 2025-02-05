@@ -32,7 +32,7 @@ contract D {
     }
 }
 // ====
-// EVMVersion: <=shanghai
+// VMMachineAndVersion: <=shanghai
 // ----
 // constructor(), 2 ether ->
 // gas irOptimized: 108104

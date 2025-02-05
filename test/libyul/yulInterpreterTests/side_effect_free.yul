@@ -13,7 +13,7 @@
 	pop(keccak256(0, 10))
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // Trace:
 // Memory dump:

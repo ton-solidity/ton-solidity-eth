@@ -17,7 +17,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // test_store_ok() -> 1
 // x() -> 0

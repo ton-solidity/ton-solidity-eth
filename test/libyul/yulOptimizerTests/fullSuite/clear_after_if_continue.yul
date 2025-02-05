@@ -7,7 +7,7 @@
     if y { revert(0, 0) }
 }
 // ====
-// EVMVersion: >=shanghai
+// VMMachineAndVersion: >=shanghai
 // ----
 // step: fullSuite
 //

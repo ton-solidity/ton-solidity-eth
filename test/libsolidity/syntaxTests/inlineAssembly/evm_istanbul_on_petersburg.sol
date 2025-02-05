@@ -11,7 +11,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: =petersburg
+// VMMachineAndVersion: =petersburg
 // ----
 // TypeError 1561: (101-108): The "chainid" instruction is only available for Istanbul-compatible VMs (you are currently compiling for "petersburg").
 //  DeclarationError 8678: (95-110): Variable count for assignment to "id" does not match number of values (1 vs. 0)

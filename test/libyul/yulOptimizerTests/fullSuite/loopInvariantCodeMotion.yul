@@ -18,7 +18,7 @@
     }
 }
 // ====
-// EVMVersion: >=istanbul
+// VMMachineAndVersion: >=istanbul
 // ----
 // step: fullSuite
 //

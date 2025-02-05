@@ -6,7 +6,7 @@ function f(a: A) {}
 forall (A, B)
 function g(a: A, b: B) {}
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // compileViaYul: true
 // ----
 // Warning 2264: (0-29): Experimental features are turned on. Do not use experimental features on live deployments.

@@ -8,5 +8,5 @@ contract C {
 	bytes32 transient y;
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----

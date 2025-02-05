@@ -8,7 +8,7 @@ contract C {
 	}
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // revertStrings: debug
 // ----
 // f() -> FAILURE, hex"08c379a0", 0x20, 0

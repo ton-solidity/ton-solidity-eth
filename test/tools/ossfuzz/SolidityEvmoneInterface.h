@@ -41,7 +41,7 @@ struct CompilerOutput
 struct CompilerInput
 {
 	CompilerInput(
-		langutil::EVMVersion _evmVersion,
+		langutil::VMMachineAndVersion _evmVersion,
 		StringMap const& _sourceCode,
 		std::string const& _contractName,
 		frontend::OptimiserSettings _optimiserSettings,
@@ -58,7 +58,7 @@ struct CompilerInput
 		viaIR(_viaIR)
 	{}
 	/// EVM target version
-	langutil::EVMVersion evmVersion;
+	langutil::VMMachineAndVersion evmVersion;
 	/// Source code to be compiled
 	StringMap const& sourceCode;
 	/// Contract name without a colon prefix

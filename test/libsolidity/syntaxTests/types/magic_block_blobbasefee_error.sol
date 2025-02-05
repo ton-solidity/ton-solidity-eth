@@ -9,7 +9,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: =shanghai
+// VMMachineAndVersion: =shanghai
 // ----
 // TypeError 1006: (74-91): "blobbasefee" is not supported by the VM version.
 // TypeError 6679: (187-198): The "blobbasefee" instruction is only available for Cancun-compatible VMs (you are currently compiling for "shanghai").

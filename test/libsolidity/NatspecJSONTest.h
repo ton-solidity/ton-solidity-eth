@@ -53,7 +53,7 @@ public:
 
 	static std::unique_ptr<TestCase> create(Config const& _config);
 
-	NatspecJSONTest(std::string const& _filename, langutil::EVMVersion _evmVersion):
+	NatspecJSONTest(std::string const& _filename, langutil::VMMachineAndVersion _evmVersion):
 		SyntaxTest(
 			_filename,
 			_evmVersion,

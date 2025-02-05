@@ -17,7 +17,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // f(uint256): 0 -> FAILURE
 // f(uint256): 1 -> FAILURE

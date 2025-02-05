@@ -141,7 +141,7 @@ std::string Pattern::toString() const
 	{
 	case Operation:
 		// Note: This function is exclusively used for debugging.
-		s << instructionInfo(m_instruction, EVMVersion()).name;
+		s << instructionInfo(m_instruction, VMMachineAndVersion()).name;
 		break;
 	case Push:
 		if (m_data)

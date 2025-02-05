@@ -8,6 +8,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: =spuriousDragon
+// VMMachineAndVersion: =spuriousDragon
 // ----
 // TypeError 1812: (73-112): This catch clause type cannot be used on the selected EVM version (spuriousDragon). You need at least a Byzantium-compatible EVM or use `catch { ... }`.

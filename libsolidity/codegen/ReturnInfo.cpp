@@ -24,7 +24,7 @@
 using namespace solidity::frontend;
 using namespace solidity::langutil;
 
-ReturnInfo::ReturnInfo(EVMVersion const& _evmVersion, FunctionType const& _functionType)
+ReturnInfo::ReturnInfo(VMMachineAndVersion const& _evmVersion, FunctionType const& _functionType)
 {
 	FunctionType::Kind const funKind = _functionType.kind();
 	bool const haveReturndatacopy = _evmVersion.supportsReturndata();

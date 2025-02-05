@@ -8,6 +8,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: =spuriousDragon
+// VMMachineAndVersion: =spuriousDragon
 // ----
 // TypeError 9908: (73-106): This catch clause type cannot be used on the selected EVM version (spuriousDragon). You need at least a Byzantium-compatible EVM or use `catch { ... }`.

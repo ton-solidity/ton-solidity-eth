@@ -302,7 +302,7 @@ u256 EVMInstructionInterpreter::eval(
 	case Instruction::NUMBER:
 		return m_state.blockNumber;
 	case Instruction::PREVRANDAO:
-		return (m_evmVersion < langutil::EVMVersion::paris()) ? m_state.difficulty : m_state.prevrandao;
+		return (m_evmVersion < langutil::VMMachineAndVersion::paris()) ? m_state.difficulty : m_state.prevrandao;
 	case Instruction::GASLIMIT:
 		return m_state.gaslimit;
 	// --------------- memory / storage / logs ---------------

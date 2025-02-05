@@ -9,7 +9,7 @@
     mcopy(0xffffffff00000000, 0xffffffffffffffff, 0xffffffffffffffff)
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // Trace:
 //   MCOPY(0, 0xffffffffffffffff, 1)

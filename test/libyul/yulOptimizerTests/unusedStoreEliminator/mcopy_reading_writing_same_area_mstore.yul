@@ -13,7 +13,7 @@
     return(0, 0x20)
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // step: unusedStoreEliminator
 //

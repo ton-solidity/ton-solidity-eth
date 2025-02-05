@@ -14,7 +14,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >homestead
+// VMMachineAndVersion: >homestead
 // allowNonExistingFunctions: true
 // ----
 // _() -> FAILURE

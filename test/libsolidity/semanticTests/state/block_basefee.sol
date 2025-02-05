@@ -9,7 +9,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=london
+// VMMachineAndVersion: >=london
 // ----
 // f() -> 7
 // g() -> 7

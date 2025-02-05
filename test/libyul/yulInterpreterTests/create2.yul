@@ -4,7 +4,7 @@
     sstore(0, msize())
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // Trace:
 //   CREATE2(0, 0, 32, 32)

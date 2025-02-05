@@ -83,7 +83,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=paris
+// VMMachineAndVersion: >=paris
 // ----
 // Warning 5740: (94-1733): Unreachable code.
 // Warning 5740: (1746-1758): Unreachable code.

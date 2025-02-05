@@ -28,7 +28,7 @@
 #include <libsolutil/Common.h>
 #include <libsolutil/CommonData.h>
 #include <libsolutil/Numeric.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 #include <functional>
 #include <memory>
@@ -119,7 +119,7 @@ public:
 	virtual void markAsInvalid() = 0;
 
 	/// @returns the EVM version the assembly targets.
-	virtual langutil::EVMVersion evmVersion() const = 0;
+	virtual langutil::VMMachineAndVersion evmVersion() const = 0;
 };
 
 enum class IdentifierContext { LValue, RValue, VariableDeclaration, NonExternal };

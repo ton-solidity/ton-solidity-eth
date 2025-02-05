@@ -5,7 +5,7 @@
     sstore(a, b)
 }
 // ====
-// EVMVersion: >byzantium
+// VMMachineAndVersion: >byzantium
 // ----
 // step: fullSuite
 //

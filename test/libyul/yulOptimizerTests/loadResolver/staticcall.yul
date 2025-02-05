@@ -10,7 +10,7 @@
     mstore(0, sload(a))
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // step: loadResolver
 //

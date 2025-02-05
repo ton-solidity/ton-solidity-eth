@@ -90,7 +90,7 @@ TestCase::TestResult FunctionSideEffects::run(std::ostream& _stream, std::string
 
 	// TODO: Add EOF support
 	std::map<YulName, SideEffects> functionSideEffects = SideEffectsPropagator::sideEffects(
-		EVMDialect::strictAssemblyForEVMObjects(langutil::EVMVersion(), std::nullopt),
+		EVMDialect::strictAssemblyForEVMObjects(langutil::VMMachineAndVersion(), std::nullopt),
 		CallGraphGenerator::callGraph(obj.code()->root())
 	);
 

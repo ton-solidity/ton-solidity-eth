@@ -22,7 +22,7 @@
 #pragma once
 
 #include <libyul/optimiser/ASTWalker.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 #include <libsolutil/Numeric.h>
 #include <libevmasm/Instruction.h>
 

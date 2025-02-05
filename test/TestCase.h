@@ -20,7 +20,7 @@
 
 #include <test/TestCaseReader.h>
 
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 #include <boost/filesystem.hpp>
 
@@ -38,7 +38,7 @@ public:
 	struct Config
 	{
 		std::string filename;
-		langutil::EVMVersion evmVersion;
+		langutil::VMMachineAndVersion evmVersion;
 		std::optional<uint8_t> eofVersion;
 		std::vector<boost::filesystem::path> vmPaths;
 		bool enforceGasCost = false;

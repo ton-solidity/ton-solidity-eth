@@ -4,6 +4,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=paris
+// VMMachineAndVersion: >=paris
 // ----
 // Warning 8417: (77-93): Since the VM version paris, "difficulty" was replaced by "prevrandao", which now returns a random number based on the beacon chain.

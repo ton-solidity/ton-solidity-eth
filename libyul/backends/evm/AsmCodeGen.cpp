@@ -37,7 +37,7 @@ void CodeGenerator::assemble(
 	Block const& _parsedData,
 	AsmAnalysisInfo& _analysisInfo,
 	evmasm::Assembly& _assembly,
-	langutil::EVMVersion _evmVersion,
+	langutil::VMMachineAndVersion _evmVersion,
 	std::optional<uint8_t> _eofVersion,
 	ExternalIdentifierAccess::CodeGenerator _identifierAccessCodeGen,
 	bool _useNamedLabelsForFunctions,

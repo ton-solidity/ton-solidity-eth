@@ -69,7 +69,7 @@ std::variant<Program, ErrorList> Program::load(CharStream& _sourceCode)
 {
 	// ASSUMPTION: parseSource() rewinds the stream on its own
 	// TODO: Add support for EOF
-	Dialect const& dialect = EVMDialect::strictAssemblyForEVMObjects(EVMVersion{}, std::nullopt);
+	Dialect const& dialect = EVMDialect::strictAssemblyForEVMObjects(VMMachineAndVersion{}, std::nullopt);
 
 	std::variant<std::unique_ptr<AST>, ErrorList> astOrErrors = parseObject(dialect, _sourceCode);
 	if (std::holds_alternative<ErrorList>(astOrErrors))

@@ -9,6 +9,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // TypeError 5320: (112-161): This try statement already has a low-level catch clause.

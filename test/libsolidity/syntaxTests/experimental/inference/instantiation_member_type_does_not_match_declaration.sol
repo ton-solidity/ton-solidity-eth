@@ -11,7 +11,7 @@ instantiation T: C {
     function f(self: U) {}
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // compileViaYul: true
 // ----
 // Warning 2264: (0-29): Experimental features are turned on. Do not use experimental features on live deployments.

@@ -18,7 +18,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // constructor(), 23 wei ->
 // gas legacy: 100517

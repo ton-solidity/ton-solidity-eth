@@ -12,7 +12,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // TypeError 7006: (64-98): Cannot set option "value", since the constructor of contract D is not payable.
 // TypeError 9903: (64-98): Function call option "gas" cannot be used with "new".

@@ -64,7 +64,7 @@ protected:
 	}
 
 	// TODO: Add EOF support
-	EVMDialect m_dialect{EVMVersion{}, std::nullopt, true};
+	EVMDialect m_dialect{VMMachineAndVersion{}, std::nullopt, true};
 	std::shared_ptr<Object> m_object;
 	SSAValueTracker m_ssaValues;
 	std::map<YulName, AssignedValue> m_values;

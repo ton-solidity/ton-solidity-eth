@@ -45,7 +45,7 @@ using namespace solidity::langutil;
 using namespace solidity::util;
 
 IRGenerator::IRGenerator(
-	EVMVersion _evmVersion,
+	VMMachineAndVersion _evmVersion,
 	std::optional<uint8_t> _eofVersion,
 	frontend::RevertStrings, std::map<std::string, unsigned int>,
 	DebugInfoSelection const&,

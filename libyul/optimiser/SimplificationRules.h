@@ -29,7 +29,7 @@
 #include <libsolutil/CommonData.h>
 #include <libsolutil/Numeric.h>
 
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 #include <liblangutil/DebugData.h>
 
 #include <functional>
@@ -56,7 +56,7 @@ public:
 
 	using Rule = evmasm::SimplificationRule<Pattern>;
 
-	explicit SimplificationRules(std::optional<langutil::EVMVersion> _evmVersion = std::nullopt);
+	explicit SimplificationRules(std::optional<langutil::VMMachineAndVersion> _evmVersion = std::nullopt);
 
 	/// @returns a pointer to the first matching pattern and sets the match
 	/// groups accordingly.
@@ -133,7 +133,7 @@ public:
 
 	/// Turns this pattern into an actual expression. Should only be called
 	/// for patterns resulting from an action, i.e. with match groups assigned.
-	Expression toExpression(langutil::DebugData::ConstPtr const& _debugData, langutil::EVMVersion _evmVersion) const;
+	Expression toExpression(langutil::DebugData::ConstPtr const& _debugData, langutil::VMMachineAndVersion _evmVersion) const;
 
 private:
 	Expression const& matchGroupValue() const;

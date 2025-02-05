@@ -15,6 +15,6 @@ contract C is B, A {
     }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // TypeError 6480: (229-420): Derived contract must override function "". Two or more base classes define function with same name and parameter types.

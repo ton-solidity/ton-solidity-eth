@@ -24,7 +24,7 @@
 
 #include <libevmasm/Exceptions.h>
 
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 #include <libsolutil/Numeric.h>
 #include <libsolutil/Assertions.h>
@@ -50,7 +50,7 @@ public:
 	static unsigned optimiseConstants(
 		bool _isCreation,
 		size_t _runs,
-		langutil::EVMVersion _evmVersion,
+		langutil::VMMachineAndVersion _evmVersion,
 		Assembly& _assembly
 	);
 
@@ -62,7 +62,7 @@ protected:
 		bool isCreation; ///< Whether this is called during contract creation or runtime.
 		size_t runs; ///< Estimated number of calls per opcode oven the lifetime of the contract.
 		size_t multiplicity; ///< Number of times the constant appears in the code.
-		langutil::EVMVersion evmVersion; ///< Version of the EVM
+		langutil::VMMachineAndVersion evmVersion; ///< Version of the EVM
 	};
 
 	explicit ConstantOptimisationMethod(Params const& _params, u256 const& _value):
@@ -76,10 +76,10 @@ protected:
 
 protected:
 	/// @returns the run gas for the given items ignoring special gas costs
-	static bigint simpleRunGas(AssemblyItems const& _items, langutil::EVMVersion _evmVersion);
+	static bigint simpleRunGas(AssemblyItems const& _items, langutil::VMMachineAndVersion _evmVersion);
 	/// @returns the gas needed to store the given data literally
 	bigint dataGas(bytes const& _data) const;
-	static size_t bytesRequired(AssemblyItems const& _items, langutil::EVMVersion _evmVersion);
+	static size_t bytesRequired(AssemblyItems const& _items, langutil::VMMachineAndVersion _evmVersion);
 	/// @returns the combined estimated gas usage taking @a m_params into account.
 	bigint combineGas(
 		bigint const& _runGas,

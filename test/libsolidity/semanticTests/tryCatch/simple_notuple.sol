@@ -12,7 +12,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // f(bool): true -> 13
 // f(bool): false -> 9

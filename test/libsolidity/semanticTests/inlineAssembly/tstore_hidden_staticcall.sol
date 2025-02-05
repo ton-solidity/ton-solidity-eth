@@ -15,7 +15,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // test() -> FAILURE
 // gas irOptimized: 98437877

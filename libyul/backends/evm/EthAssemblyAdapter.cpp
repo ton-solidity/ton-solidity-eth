@@ -180,7 +180,7 @@ void EthAssemblyAdapter::markAsInvalid()
 	m_assembly.markAsInvalid();
 }
 
-langutil::EVMVersion EthAssemblyAdapter::evmVersion() const
+langutil::VMMachineAndVersion EthAssemblyAdapter::evmVersion() const
 {
 	return m_assembly.evmVersion();
 }

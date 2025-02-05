@@ -25,5 +25,5 @@ contract test {
     }
 }
 // ====
-// EVMVersion: =paris
+// VMMachineAndVersion: =paris
 // ----

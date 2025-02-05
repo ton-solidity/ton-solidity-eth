@@ -2,7 +2,7 @@
   sstore(0, byte(0, shr(0x9, calldataload(0))))
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // step: expressionSimplifier
 //

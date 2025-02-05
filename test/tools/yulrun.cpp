@@ -30,7 +30,7 @@
 
 #include <liblangutil/DebugInfoSelection.h>
 #include <liblangutil/Exceptions.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 #include <liblangutil/SourceReferenceFormatter.h>
 
 #include <libsolutil/CommonIO.h>
@@ -57,7 +57,7 @@ namespace
 std::pair<std::shared_ptr<AST const>, std::shared_ptr<AsmAnalysisInfo>> parse(std::string const& _source)
 {
 	YulStack stack(
-		langutil::EVMVersion(),
+		langutil::VMMachineAndVersion(),
 		std::nullopt,
 		YulStack::Language::StrictAssembly,
 		solidity::frontend::OptimiserSettings::none(),
@@ -87,7 +87,7 @@ void interpret(std::string const& _source, bool _inspect, bool _disableExternalC
 	state.maxTraceSize = 10000;
 	try
 	{
-		Dialect const& dialect(EVMDialect::strictAssemblyForEVMObjects(langutil::EVMVersion{}, std::nullopt));
+		Dialect const& dialect(EVMDialect::strictAssemblyForEVMObjects(langutil::VMMachineAndVersion{}, std::nullopt));
 
 		if (_inspect)
 			InspectedInterpreter::run(std::make_shared<Inspector>(_source, state), state, dialect, ast->root(), _disableExternalCalls, /*disableMemoryTracing=*/false);

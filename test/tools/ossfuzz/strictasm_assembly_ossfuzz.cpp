@@ -20,7 +20,7 @@
 #include <libyul/backends/evm/EVMCodeTransform.h>
 
 #include <liblangutil/DebugInfoSelection.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 using namespace solidity;
 using namespace solidity::yul;
@@ -37,7 +37,7 @@ extern "C" int LLVMFuzzerTestOneInput(uint8_t const* _data, size_t _size)
 
 	std::string input(reinterpret_cast<char const*>(_data), _size);
 	YulStack stack(
-		langutil::EVMVersion(),
+		langutil::VMMachineAndVersion(),
 		std::nullopt,
 		YulStack::Language::StrictAssembly,
 		solidity::frontend::OptimiserSettings::minimal(),

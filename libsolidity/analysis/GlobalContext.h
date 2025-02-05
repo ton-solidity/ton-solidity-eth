@@ -23,7 +23,7 @@
 
 #pragma once
 
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 #include <libsolidity/ast/ASTForward.h>
 #include <map>
 #include <memory>
@@ -48,7 +48,7 @@ public:
 	GlobalContext(GlobalContext const&) = delete;
 	GlobalContext& operator=(GlobalContext const&) = delete;
 
-	GlobalContext(langutil::EVMVersion _evmVersion);
+	GlobalContext(langutil::VMMachineAndVersion _evmVersion);
 	void setCurrentContract(ContractDefinition const& _contract);
 	void resetCurrentContract() { m_currentContract = nullptr; }
 	MagicVariableDeclaration const* currentThis() const;

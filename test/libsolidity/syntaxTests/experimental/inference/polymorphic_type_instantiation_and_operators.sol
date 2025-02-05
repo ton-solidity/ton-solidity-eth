@@ -46,7 +46,7 @@ function fun(a: T(int: P3), b: T(str: P4)) {
     C.foo(b, b);
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // compileViaYul: true
 // ----
 // Warning 2264: (0-29): Experimental features are turned on. Do not use experimental features on live deployments.

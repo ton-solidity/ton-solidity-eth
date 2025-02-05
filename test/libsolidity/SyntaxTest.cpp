@@ -40,7 +40,7 @@ namespace fs = boost::filesystem;
 
 SyntaxTest::SyntaxTest(
 	std::string const& _filename,
-	langutil::EVMVersion _evmVersion,
+	langutil::VMMachineAndVersion _evmVersion,
 	Error::Severity _minSeverity
 ):
 	CommonSyntaxTest(_filename, _evmVersion),

@@ -375,7 +375,7 @@ Json formatImmutableReferences(std::map<u256, evmasm::LinkerObject::ImmutableRef
 }
 
 Json collectEVMObject(
-	langutil::EVMVersion _evmVersion,
+	langutil::VMMachineAndVersion _evmVersion,
 	evmasm::LinkerObject const& _object,
 	std::string const* _sourceMap,
 	Json _generatedSources,
@@ -828,10 +828,10 @@ std::variant<StandardCompiler::InputsAndSettings, Json> StandardCompiler::parseI
 	{
 		if (!settings["evmVersion"].is_string())
 			return formatFatalError(Error::Type::JSONError, "evmVersion must be a string.");
-		std::optional<langutil::EVMVersion> version = langutil::EVMVersion::fromString(settings["evmVersion"].get<std::string>());
+		std::optional<langutil::VMMachineAndVersion> version = langutil::VMMachineAndVersion::fromString(settings["evmVersion"].get<std::string>());
 		if (!version)
 			return formatFatalError(Error::Type::JSONError, "Invalid EVM version requested.");
-		if (version < EVMVersion::constantinople())
+		if (version < VMMachineAndVersion::constantinople())
 			ret.errors.emplace_back(formatError(
 				Error::Type::Warning,
 				"general",

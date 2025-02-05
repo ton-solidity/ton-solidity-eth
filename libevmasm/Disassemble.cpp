@@ -29,7 +29,7 @@ using namespace solidity::evmasm;
 
 void solidity::evmasm::eachInstruction(
 	bytes const& _mem,
-	langutil::EVMVersion _evmVersion,
+	langutil::VMMachineAndVersion _evmVersion,
 	std::function<void(Instruction,u256 const&)> const& _onInstruction
 )
 {
@@ -57,7 +57,7 @@ void solidity::evmasm::eachInstruction(
 	}
 }
 
-std::string solidity::evmasm::disassemble(bytes const& _mem, langutil::EVMVersion _evmVersion, std::string const& _delimiter)
+std::string solidity::evmasm::disassemble(bytes const& _mem, langutil::VMMachineAndVersion _evmVersion, std::string const& _delimiter)
 {
 	std::stringstream ret;
 	eachInstruction(_mem, _evmVersion, [&](Instruction _instr, u256 const& _data) {

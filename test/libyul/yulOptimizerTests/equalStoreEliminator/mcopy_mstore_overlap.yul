@@ -12,7 +12,7 @@
     mcopy(_1, _33, _31) // Not redundant. MCOPY does not copy all of it.
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // step: equalStoreEliminator
 //

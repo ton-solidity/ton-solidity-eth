@@ -16,7 +16,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=paris
+// VMMachineAndVersion: >=paris
 // ----
 // DeclarationError 5017: (101-111): The identifier "difficulty" is reserved and can not be used.
 // DeclarationError 5017: (255-323): The identifier "difficulty" is reserved and can not be used.

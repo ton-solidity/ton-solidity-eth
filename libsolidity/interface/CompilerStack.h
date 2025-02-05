@@ -38,7 +38,7 @@
 #include <liblangutil/CharStreamProvider.h>
 #include <liblangutil/DebugInfoSelection.h>
 #include <liblangutil/ErrorReporter.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 #include <liblangutil/SourceLocation.h>
 
 #include <libevmasm/AbstractAssemblyStack.h>
@@ -230,7 +230,7 @@ public:
 	/// Set the EVM version used before running compile.
 	/// When called without an argument it will revert to the default version.
 	/// Must be set before parsing.
-	void setEVMVersion(langutil::EVMVersion _version = langutil::EVMVersion{});
+	void setEVMVersion(langutil::VMMachineAndVersion _version = langutil::VMMachineAndVersion{});
 
 	/// Set the EOF version used before running compile.
 	/// If set to std::nullopt (the default), legacy non-EOF bytecode is generated.
@@ -589,7 +589,7 @@ private:
 	RevertStrings m_revertStrings = RevertStrings::Default;
 	State m_stopAfter = State::CompilationSuccessful;
 	bool m_viaIR = false;
-	langutil::EVMVersion m_evmVersion;
+	langutil::VMMachineAndVersion m_evmVersion;
 	std::optional<uint8_t> m_eofVersion;
 	ModelCheckerSettings m_modelCheckerSettings;
 	ContractSelection m_selectedContracts;

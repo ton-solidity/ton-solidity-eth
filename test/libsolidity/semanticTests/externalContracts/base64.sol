@@ -30,7 +30,7 @@ contract test {
 // https://datatracker.ietf.org/doc/html/rfc4648#section-10
 //
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // constructor()
 // gas irOptimized: 79076

@@ -3,7 +3,7 @@
     mstore(0, tload(0))
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // Trace:
 // Memory dump:

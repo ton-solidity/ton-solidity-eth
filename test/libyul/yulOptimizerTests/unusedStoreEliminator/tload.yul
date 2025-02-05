@@ -7,7 +7,7 @@
     tstore(zero, y)
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // step: unusedStoreEliminator
 //

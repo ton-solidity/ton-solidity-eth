@@ -26,7 +26,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // f() -> 0, 0, 96, 13, "test message."
 // g() -> 0x137aa4dfc0911524504fcd4d98501f179bc13b4a, 0, 96, 7, "success"

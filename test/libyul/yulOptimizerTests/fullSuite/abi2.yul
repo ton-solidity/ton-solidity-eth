@@ -1071,7 +1071,7 @@
     }
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // step: fullSuite
 //

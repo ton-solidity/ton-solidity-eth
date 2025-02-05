@@ -34,7 +34,7 @@
 	sstore(3,1)
 }
 // ====
-// EVMVersion: >homestead
+// VMMachineAndVersion: >homestead
 // ----
 // step: fullSuite
 //

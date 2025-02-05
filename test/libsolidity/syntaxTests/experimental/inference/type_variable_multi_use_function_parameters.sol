@@ -10,7 +10,7 @@ function test(t: T, u: U) {
     f(t, u);
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // Warning 2264: (0-29): Experimental features are turned on. Do not use experimental features on live deployments.
 // TypeError 8456: (116-123): Cannot unify T and U.

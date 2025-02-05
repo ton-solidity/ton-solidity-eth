@@ -13,7 +13,7 @@ contract C {
 	}
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // revertStrings: debug
 // ABIEncoderV1Only: true
 // compileViaYul: false

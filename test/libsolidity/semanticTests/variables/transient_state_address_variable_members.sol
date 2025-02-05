@@ -9,7 +9,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // constructor() ->
 // gas legacy: 59027

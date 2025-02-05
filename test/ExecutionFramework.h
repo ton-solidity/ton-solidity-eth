@@ -29,7 +29,7 @@
 #include <libsolidity/interface/OptimiserSettings.h>
 #include <libsolidity/interface/DebugSettings.h>
 
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 #include <libsolutil/FunctionSelector.h>
 #include <libsolutil/ErrorCodes.h>
@@ -56,7 +56,7 @@ class ExecutionFramework
 
 public:
 	ExecutionFramework();
-	ExecutionFramework(langutil::EVMVersion _evmVersion, std::vector<boost::filesystem::path> const& _vmPaths);
+	ExecutionFramework(langutil::VMMachineAndVersion _evmVersion, std::vector<boost::filesystem::path> const& _vmPaths);
 	virtual ~ExecutionFramework() = default;
 
 	virtual bytes const& compileAndRunWithoutCheck(
@@ -291,7 +291,7 @@ protected:
 
 	std::vector<frontend::test::LogRecord> recordedLogs() const;
 
-	langutil::EVMVersion m_evmVersion;
+	langutil::VMMachineAndVersion m_evmVersion;
 	solidity::frontend::RevertStrings m_revertStrings = solidity::frontend::RevertStrings::Default;
 	solidity::frontend::OptimiserSettings m_optimiserSettings = solidity::frontend::OptimiserSettings::minimal();
 	bool m_showMessages = false;

@@ -22,7 +22,7 @@
 #pragma once
 
 #include <liblangutil/Exceptions.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 #include <libyul/ASTForward.h>
 #include <libyul/Dialect.h>
@@ -124,7 +124,7 @@ private:
 	std::set<Scope::Variable const*> m_activeVariables;
 	AsmAnalysisInfo& m_info;
 	langutil::ErrorReporter& m_errorReporter;
-	langutil::EVMVersion m_evmVersion;
+	langutil::VMMachineAndVersion m_evmVersion;
 	Dialect const& m_dialect;
 	/// Names of data objects to be referenced by builtin functions with literal arguments.
 	std::set<std::string> m_dataNames;

@@ -6,7 +6,7 @@
     tstore(0, y)
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // step: unusedPruner
 //

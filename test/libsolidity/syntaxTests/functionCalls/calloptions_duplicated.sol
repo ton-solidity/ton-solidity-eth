@@ -8,7 +8,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // TypeError 9886: (78-101): Duplicate option "gas".
 // TypeError 9886: (111-138): Duplicate option "value".

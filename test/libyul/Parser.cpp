@@ -163,7 +163,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_empty_block)
 		"/// @src 0:234:543\n"
 		"{}\n";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	CHECK_LOCATION(result->root().debugData->originLocation, "source0", 234, 543);
@@ -182,7 +182,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_block_with_children)
 			"let y := add(1, 2)\n"
 		"}\n";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result);
 	CHECK_LOCATION(result->root().debugData->originLocation, "source0", 234, 543);
@@ -206,7 +206,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_block_different_sources)
 			"let y := add(1, 2)\n"
 		"}\n";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	CHECK_LOCATION(result->root().debugData->originLocation, "source0", 234, 543);
@@ -229,7 +229,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_block_nested)
 			"switch y case 0 {} default {}\n"
 		"}\n";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	CHECK_LOCATION(result->root().debugData->originLocation, "source0", 234, 543);
@@ -254,7 +254,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_block_switch_case)
 			"}\n"
 		"}\n";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	CHECK_LOCATION(result->root().debugData->originLocation, "source0", 234, 543);
@@ -287,7 +287,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_inherit_into_outer_scope)
 			"let y := add(1, 2)\n"
 		"}\n";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 
@@ -319,7 +319,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_assign_empty)
 			"a := true\n"
 		"}\n";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0); // should still parse
 	BOOST_REQUIRE_EQUAL(2, result->root().statements.size());
@@ -341,7 +341,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_invalid_source_index)
 			"\n"
 		"}\n";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result); // should still parse
 	BOOST_REQUIRE(errorList.size() == 1);
@@ -362,7 +362,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_mixed_locations_1)
 			":= true\n"
 		"}\n";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 
@@ -386,7 +386,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_mixed_locations_2)
 		}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	BOOST_REQUIRE_EQUAL(1, result->root().statements.size());
@@ -421,7 +421,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_mixed_locations_3)
 		}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	BOOST_REQUIRE_EQUAL(2, result->root().statements.size());
@@ -458,7 +458,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_invalid_comments_after_valid)
 		}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	BOOST_REQUIRE_EQUAL(1, result->root().statements.size());
@@ -478,7 +478,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_invalid_suffix)
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result);
 	BOOST_REQUIRE(errorList.size() == 1);
@@ -496,7 +496,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_invalid_prefix)
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	CHECK_LOCATION(result->root().debugData->originLocation, "", -1, -1);
@@ -511,7 +511,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_unspecified)
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	CHECK_LOCATION(result->root().debugData->originLocation, "", -1, -1);
@@ -526,7 +526,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_non_integer)
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result);
 	BOOST_REQUIRE(errorList.size() == 1);
@@ -544,7 +544,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_bad_integer)
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result);
 	BOOST_REQUIRE(errorList.size() == 1);
@@ -566,7 +566,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_ensure_last_match)
 		}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	BOOST_REQUIRE(std::holds_alternative<VariableDeclaration>(result->root().statements.at(0)));
@@ -585,7 +585,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_two_locations_no_whitespace)
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result);
 	BOOST_REQUIRE(errorList.size() == 1);
@@ -603,7 +603,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_two_locations_separated_with_single_s
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	CHECK_LOCATION(result->root().debugData->originLocation, "source1", 333, 444);
@@ -615,7 +615,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_leading_trailing_whitespace)
 	ErrorReporter reporter(errorList);
 	auto const sourceText = "///     @src 0:111:222    \n{}";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	CHECK_LOCATION(result->root().debugData->originLocation, "source0", 111, 222);
@@ -633,7 +633,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_reference_original_sloc)
 		}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	BOOST_REQUIRE(std::holds_alternative<VariableDeclaration>(result->root().statements.at(0)));
@@ -656,7 +656,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_with_code_snippets)
 		}
 	)~~~";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	BOOST_REQUIRE_EQUAL(result->root().statements.size(), 2);
@@ -682,7 +682,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_with_code_snippets_empty_snippet)
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	CHECK_LOCATION(result->root().debugData->originLocation, "source0", 111, 222);
@@ -697,7 +697,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_with_code_snippets_no_whitespace_befo
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result);
 	BOOST_REQUIRE(errorList.size() == 1);
@@ -715,7 +715,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_with_code_snippets_no_whitespace_afte
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	CHECK_LOCATION(result->root().debugData->originLocation, "source0", 111, 222);
@@ -730,7 +730,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_two_locations_with_snippets_no_whites
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	CHECK_LOCATION(result->root().debugData->originLocation, "source1", 333, 444);
@@ -745,7 +745,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_two_locations_with_snippets_untermina
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result);
 	BOOST_REQUIRE(errorList.size() == 1);
@@ -764,7 +764,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_single_quote)
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result);
 	BOOST_REQUIRE(errorList.size() == 1);
@@ -782,7 +782,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_two_snippets_with_hex_comment)
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	// the second source location is not parsed as such, as the hex string isn't interpreted as snippet but
@@ -799,7 +799,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_invalid_escapes)
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	CHECK_LOCATION(result->root().debugData->originLocation, "source0", 111, 222);
@@ -815,7 +815,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_single_quote_snippet_with_whitespaces
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	CHECK_LOCATION(result->root().debugData->originLocation, "source1", 222, 333);
@@ -831,7 +831,7 @@ BOOST_DATA_TEST_CASE(customSourceLocations_scanner_errors_outside_string_lits_ar
 		{{}}
 	)", invalid);
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.empty());
 	CHECK_LOCATION(result->root().debugData->originLocation, "source1", 222, 333);
@@ -850,7 +850,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_multi_line_source_loc)
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.empty());
 	CHECK_LOCATION(result->root().debugData->originLocation, "source0", 333, 444);
@@ -869,7 +869,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_with_code_snippets_with_nested_locati
 		}
 	)~~~";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	BOOST_REQUIRE_EQUAL(result->root().statements.size(), 2);
@@ -899,7 +899,7 @@ BOOST_AUTO_TEST_CASE(astid)
 		}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result);
 	BOOST_CHECK(result->root().debugData->astID == int64_t(7));
@@ -922,7 +922,7 @@ BOOST_AUTO_TEST_CASE(astid_reset)
 		}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result);
 	BOOST_CHECK(result->root().debugData->astID == int64_t(7));
@@ -941,7 +941,7 @@ BOOST_AUTO_TEST_CASE(astid_multi)
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result);
 	BOOST_CHECK(result->root().debugData->astID == int64_t(8));
@@ -956,7 +956,7 @@ BOOST_AUTO_TEST_CASE(astid_invalid)
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result);
 	BOOST_REQUIRE(errorList.size() == 1);
@@ -974,7 +974,7 @@ BOOST_AUTO_TEST_CASE(astid_too_large)
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result);
 	BOOST_REQUIRE(errorList.size() == 1);
@@ -991,7 +991,7 @@ BOOST_AUTO_TEST_CASE(astid_way_too_large)
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result);
 	BOOST_REQUIRE(errorList.size() == 1);
@@ -1008,7 +1008,7 @@ BOOST_AUTO_TEST_CASE(astid_not_fully_numeric)
 		{}
 	)";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result);
 	BOOST_REQUIRE(errorList.size() == 1);
@@ -1031,7 +1031,7 @@ BOOST_AUTO_TEST_CASE(customSourceLocations_multiple_src_tags_on_one_line)
 		"    let x := 123\n"
 		"}\n";
 	// TODO: Add EOF support
-	auto const& dialect = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt);
+	auto const& dialect = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt);
 	std::shared_ptr<AST> result = parse(sourceText, dialect, reporter);
 	BOOST_REQUIRE(!!result && errorList.size() == 0);
 	BOOST_REQUIRE_EQUAL(result->root().statements.size(), 1);

@@ -51,7 +51,7 @@ ExecutionFramework::ExecutionFramework():
 {
 }
 
-ExecutionFramework::ExecutionFramework(langutil::EVMVersion _evmVersion, std::vector<boost::filesystem::path> const& _vmPaths):
+ExecutionFramework::ExecutionFramework(langutil::VMMachineAndVersion _evmVersion, std::vector<boost::filesystem::path> const& _vmPaths):
 	m_evmVersion(_evmVersion),
 	m_optimiserSettings(solidity::frontend::OptimiserSettings::minimal()),
 	m_showMessages(solidity::test::CommonOptions::get().showMessages),
@@ -186,7 +186,7 @@ void ExecutionFramework::sendMessage(bytes const& _data, bool _isCreation, u256 
 	if (_isCreation)
 		m_contractAddress = EVMHost::convertFromEVMC(result.create_address);
 
-	unsigned const refundRatio = (m_evmVersion >= langutil::EVMVersion::london() ? 5 : 2);
+	unsigned const refundRatio = (m_evmVersion >= langutil::VMMachineAndVersion::london() ? 5 : 2);
 	auto const totalGasUsed = InitialGas - result.gas_left;
 	auto const gasRefund = std::min(u256(result.gas_refund), totalGasUsed / refundRatio);
 

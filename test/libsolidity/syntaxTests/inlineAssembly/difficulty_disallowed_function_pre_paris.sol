@@ -16,6 +16,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: <paris
+// VMMachineAndVersion: <paris
 // ----
 // ParserError 5568: (101-111): Cannot use builtin function name "difficulty" as identifier name.

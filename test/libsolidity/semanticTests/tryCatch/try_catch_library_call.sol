@@ -36,7 +36,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // library: L
 // f(bool): true -> 8, 0x40, 0

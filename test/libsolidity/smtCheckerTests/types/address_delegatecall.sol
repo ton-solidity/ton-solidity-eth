@@ -14,7 +14,7 @@ contract C
 	}
 }
 // ====
-// EVMVersion: >spuriousDragon
+// VMMachineAndVersion: >spuriousDragon
 // SMTEngine: all
 // SMTIgnoreCex: yes
 // ----

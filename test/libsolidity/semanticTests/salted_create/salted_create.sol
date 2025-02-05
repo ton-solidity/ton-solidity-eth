@@ -17,7 +17,7 @@ contract A {
     }
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // different_salt() -> true
 // same_salt() -> true

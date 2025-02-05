@@ -17,7 +17,7 @@
   return(1, 0)
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // step: loadResolver
 //

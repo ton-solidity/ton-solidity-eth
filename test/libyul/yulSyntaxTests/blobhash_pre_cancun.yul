@@ -9,5 +9,5 @@
     }
 }
 // ====
-// EVMVersion: <=shanghai
+// VMMachineAndVersion: <=shanghai
 // ----

@@ -27,7 +27,7 @@
 
 #include <liblangutil/CharStreamProvider.h>
 #include <liblangutil/DebugInfoSelection.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 #include <libsolutil/JSON.h>
 
@@ -42,7 +42,7 @@ class IRGenerator
 {
 public:
 	IRGenerator(
-		langutil::EVMVersion _evmVersion,
+		langutil::VMMachineAndVersion _evmVersion,
 		std::optional<uint8_t> _eofVersion,
 		RevertStrings /*_revertStrings*/,
 		std::map<std::string, unsigned> /*_sourceIndices*/,
@@ -60,7 +60,7 @@ public:
 	std::string generate(ContractDefinition const& _contract);
 	std::string generate(FunctionDefinition const& _function, Type _type);
 private:
-	langutil::EVMVersion const m_evmVersion;
+	langutil::VMMachineAndVersion const m_evmVersion;
 	std::optional<uint8_t> const m_eofVersion;
 	OptimiserSettings const m_optimiserSettings;
 	//langutil::DebugInfoSelection m_debugInfoSelection = {};

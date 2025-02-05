@@ -104,10 +104,10 @@ std::string yul::test::format(std::string const& _source)
 
 namespace
 {
-std::map<std::string const, yul::Dialect const& (*)(langutil::EVMVersion, std::optional<uint8_t>)> const validDialects = {
+std::map<std::string const, yul::Dialect const& (*)(langutil::VMMachineAndVersion, std::optional<uint8_t>)> const validDialects = {
 	{
 		"evm",
-		[](langutil::EVMVersion _evmVersion, std::optional<uint8_t> _eofVersion) -> yul::Dialect const&
+		[](langutil::VMMachineAndVersion _evmVersion, std::optional<uint8_t> _eofVersion) -> yul::Dialect const&
 		{ return yul::EVMDialect::strictAssemblyForEVMObjects(_evmVersion, _eofVersion); }
 	}
 };
@@ -121,7 +121,7 @@ std::map<std::string const, yul::Dialect const& (*)(langutil::EVMVersion, std::o
 }
 }
 
-yul::Dialect const& yul::test::dialect(std::string const& _name, langutil::EVMVersion _evmVersion, std::optional<uint8_t> _eofVersion)
+yul::Dialect const& yul::test::dialect(std::string const& _name, langutil::VMMachineAndVersion _evmVersion, std::optional<uint8_t> _eofVersion)
 {
 	if (!validDialects.count(_name))
 		BOOST_THROW_EXCEPTION(std::runtime_error{

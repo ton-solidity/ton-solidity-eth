@@ -21,7 +21,7 @@
 #include <libyul/ASTForward.h>
 #include <libyul/Object.h>
 
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 #include <libsolutil/FixedHash.h>
 
@@ -38,7 +38,7 @@ enum class Language
 	StrictAssembly,
 };
 
-Dialect const& languageToDialect(Language _language, langutil::EVMVersion _version, std::optional<uint8_t> _eofVersion);
+Dialect const& languageToDialect(Language _language, langutil::VMMachineAndVersion _version, std::optional<uint8_t> _eofVersion);
 
 /// Encapsulates logic for applying @a yul::OptimiserSuite to a whole hierarchy of Yul objects.
 /// Also, acts as a transparent cache for optimized objects.
@@ -57,7 +57,7 @@ public:
 	struct Settings
 	{
 		Language language;
-		langutil::EVMVersion evmVersion;
+		langutil::VMMachineAndVersion evmVersion;
 		std::optional<uint8_t> eofVersion;
 		bool optimizeStackAllocation;
 		std::string yulOptimiserSteps;

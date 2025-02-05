@@ -146,7 +146,7 @@ BOOST_AUTO_TEST_CASE(updating_store)
 			}
 		}
 	)";
-	testCreationTimeGas(sourceCode, m_evmVersion < langutil::EVMVersion::constantinople() ? u256(0) : u256(9600));
+	testCreationTimeGas(sourceCode, m_evmVersion < langutil::VMMachineAndVersion::constantinople() ? u256(0) : u256(9600));
 }
 
 BOOST_AUTO_TEST_CASE(branches)
@@ -190,7 +190,7 @@ BOOST_AUTO_TEST_CASE(function_calls)
 	testRunTimeGas(
 		"f(uint256)",
 		std::vector<bytes>{encodeArgs(2), encodeArgs(8)},
-		m_evmVersion < EVMVersion::berlin() ?
+		m_evmVersion < VMMachineAndVersion::berlin() ?
 		u256(0) :
 		u256(2100)
 	);
@@ -222,7 +222,7 @@ BOOST_AUTO_TEST_CASE(multiple_external_functions)
 	testRunTimeGas(
 		"f(uint256)",
 		std::vector<bytes>{encodeArgs(2), encodeArgs(8)},
-		m_evmVersion < EVMVersion::berlin() ?
+		m_evmVersion < VMMachineAndVersion::berlin() ?
 		u256(0) :
 		u256(2100)
 	);
@@ -342,7 +342,7 @@ BOOST_AUTO_TEST_CASE(complex_control_flow)
 
 BOOST_AUTO_TEST_CASE(
 	mcopy_memory_expansion_gas,
-	*boost::unit_test::precondition(minEVMVersionCheck(EVMVersion::cancun()))
+	*boost::unit_test::precondition(minEVMVersionCheck(VMMachineAndVersion::cancun()))
 )
 {
 	char const* sourceCode = R"(
@@ -402,7 +402,7 @@ BOOST_AUTO_TEST_CASE(
 
 BOOST_AUTO_TEST_CASE(
 	mcopy_word_gas,
-	*boost::unit_test::precondition(minEVMVersionCheck(EVMVersion::cancun()))
+	*boost::unit_test::precondition(minEVMVersionCheck(VMMachineAndVersion::cancun()))
 )
 {
 	char const* sourceCode = R"(

@@ -61,7 +61,7 @@ contract C {
 }
 
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // compileViaYul: true
 // ----
 // () -> 1, 0

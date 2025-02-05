@@ -2,7 +2,7 @@
     sstore(0, balance(address()))
 }
 // ====
-// EVMVersion: >=istanbul
+// VMMachineAndVersion: >=istanbul
 // ----
 // step: expressionSimplifier
 //

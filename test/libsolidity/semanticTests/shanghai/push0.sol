@@ -6,6 +6,6 @@ contract C {
 }
 // ====
 // compileViaYul: also
-// EVMVersion: >=shanghai
+// VMMachineAndVersion: >=shanghai
 // ----
 // zero() -> 0

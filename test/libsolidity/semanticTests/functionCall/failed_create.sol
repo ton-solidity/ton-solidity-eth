@@ -14,7 +14,7 @@ contract C {
 	}
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // constructor(), 20 wei
 // gas irOptimized: 61548

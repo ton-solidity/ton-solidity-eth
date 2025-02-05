@@ -4,7 +4,7 @@
     sstore(2, blobhash(2)) // should store 0 since EVMHost has only two blob hashes injected in the block the transaction is being executed.
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // Trace:
 // Memory dump:

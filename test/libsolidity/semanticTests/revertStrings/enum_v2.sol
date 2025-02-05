@@ -6,7 +6,7 @@ contract C {
 	}
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // revertStrings: debug
 // ----
 // f(uint8[]): 0x20, 2, 3, 3 -> FAILURE

@@ -41,7 +41,7 @@ contract Test {
 }
 
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // testDelegate() -> 7, 0
 // testCall() -> 0, 8

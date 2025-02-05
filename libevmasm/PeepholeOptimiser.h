@@ -25,7 +25,7 @@
 #include <cstddef>
 #include <iterator>
 
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 namespace solidity::evmasm
 {
@@ -43,7 +43,7 @@ public:
 class PeepholeOptimiser
 {
 public:
-	explicit PeepholeOptimiser(AssemblyItems& _items, langutil::EVMVersion const _evmVersion):
+	explicit PeepholeOptimiser(AssemblyItems& _items, langutil::VMMachineAndVersion const _evmVersion):
 	m_items(_items),
 	m_evmVersion(_evmVersion)
 	{
@@ -55,7 +55,7 @@ public:
 private:
 	AssemblyItems& m_items;
 	AssemblyItems m_optimisedItems;
-	langutil::EVMVersion const m_evmVersion;
+	langutil::VMMachineAndVersion const m_evmVersion;
 };
 
 }

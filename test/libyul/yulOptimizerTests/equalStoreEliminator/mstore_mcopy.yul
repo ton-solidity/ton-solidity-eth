@@ -9,7 +9,7 @@
     mstore(_0, mem32) // Redundant with MCOPY.
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // step: equalStoreEliminator
 //

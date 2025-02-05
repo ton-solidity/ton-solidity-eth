@@ -9,7 +9,7 @@
     mcopy(_32, _64, _32) // Not redundant. Writing to a different area.
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // step: equalStoreEliminator
 //

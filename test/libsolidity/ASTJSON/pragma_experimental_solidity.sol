@@ -1,5 +1,5 @@
 pragma experimental solidity;
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // failAfter: Parsed

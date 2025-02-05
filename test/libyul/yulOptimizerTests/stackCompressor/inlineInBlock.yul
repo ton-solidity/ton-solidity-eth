@@ -4,7 +4,7 @@
   mstore(y, add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(add(y, 1), 1), 1), 1), 1), 1), 1), 1), 1), 1), 1), 1), 1), 1), 1), 1), 1), 1))
 }
 // ====
-// EVMVersion: =homestead
+// VMMachineAndVersion: =homestead
 // ----
 // step: stackCompressor
 //

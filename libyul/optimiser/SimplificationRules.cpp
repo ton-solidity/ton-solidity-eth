@@ -47,9 +47,9 @@ SimplificationRules::Rule const* SimplificationRules::findFirstMatch(
 	if (!instruction)
 		return nullptr;
 
-	static std::map<std::optional<EVMVersion>, std::unique_ptr<SimplificationRules>> evmRules;
+	static std::map<std::optional<VMMachineAndVersion>, std::unique_ptr<SimplificationRules>> evmRules;
 
-	std::optional<EVMVersion> version;
+	std::optional<VMMachineAndVersion> version;
 	if (yul::EVMDialect const* evmDialect = dynamic_cast<yul::EVMDialect const*>(&_dialect))
 		version = evmDialect->evmVersion();
 
@@ -97,7 +97,7 @@ void SimplificationRules::addRule(Rule const& _rule)
 	m_rules[uint8_t(_rule.pattern.instruction())].push_back(_rule);
 }
 
-SimplificationRules::SimplificationRules(std::optional<langutil::EVMVersion> _evmVersion)
+SimplificationRules::SimplificationRules(std::optional<langutil::VMMachineAndVersion> _evmVersion)
 {
 	// Multiple occurrences of one of these inside one rule must match the same equivalence class.
 	// Constants.
@@ -234,7 +234,7 @@ evmasm::Instruction Pattern::instruction() const
 	return m_instruction;
 }
 
-Expression Pattern::toExpression(langutil::DebugData::ConstPtr const& _debugData, langutil::EVMVersion _evmVersion) const
+Expression Pattern::toExpression(langutil::DebugData::ConstPtr const& _debugData, langutil::VMMachineAndVersion _evmVersion) const
 {
 	if (matchGroup())
 		return ASTCopier().translate(matchGroupValue());

@@ -47,6 +47,6 @@ contract C is Base {
 
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // test() -> 11116

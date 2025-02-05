@@ -4,6 +4,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: <constantinople
+// VMMachineAndVersion: <constantinople
 // ----
 // TypeError 7598: (77-99): "codehash" is not supported by the VM version.

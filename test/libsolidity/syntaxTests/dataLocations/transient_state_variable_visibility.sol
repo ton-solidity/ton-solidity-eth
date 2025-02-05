@@ -8,5 +8,5 @@ contract C {
     uint transient private tprv;
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----

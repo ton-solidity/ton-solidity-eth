@@ -42,7 +42,7 @@ namespace
 {
 
 std::pair<YulName, BuiltinFunctionForEVM> createEVMFunction(
-	langutil::EVMVersion _evmVersion,
+	langutil::VMMachineAndVersion _evmVersion,
 	std::string const& _name,
 	evmasm::Instruction _instruction
 )
@@ -106,27 +106,27 @@ std::pair<YulName, BuiltinFunctionForEVM> createFunction(
 	return {name, f};
 }
 
-std::set<YulName> createReservedIdentifiers(langutil::EVMVersion _evmVersion)
+std::set<YulName> createReservedIdentifiers(langutil::VMMachineAndVersion _evmVersion)
 {
 	// TODO remove this in 0.9.0. We allow creating functions or identifiers in Yul with the name
 	// basefee for VMs before london.
 	auto baseFeeException = [&](evmasm::Instruction _instr) -> bool
 	{
-		return _instr == evmasm::Instruction::BASEFEE && _evmVersion < langutil::EVMVersion::london();
+		return _instr == evmasm::Instruction::BASEFEE && _evmVersion < langutil::VMMachineAndVersion::london();
 	};
 
 	// TODO remove this in 0.9.0. We allow creating functions or identifiers in Yul with the name
 	// blobbasefee for VMs before cancun.
 	auto blobBaseFeeException = [&](evmasm::Instruction _instr) -> bool
 	{
-		return _instr == evmasm::Instruction::BLOBBASEFEE && _evmVersion < langutil::EVMVersion::cancun();
+		return _instr == evmasm::Instruction::BLOBBASEFEE && _evmVersion < langutil::VMMachineAndVersion::cancun();
 	};
 
 	// TODO remove this in 0.9.0. We allow creating functions or identifiers in Yul with the name
 	// mcopy for VMs before london.
 	auto mcopyException = [&](evmasm::Instruction _instr) -> bool
 	{
-		return _instr == evmasm::Instruction::MCOPY && _evmVersion < langutil::EVMVersion::cancun();
+		return _instr == evmasm::Instruction::MCOPY && _evmVersion < langutil::VMMachineAndVersion::cancun();
 	};
 
 	// TODO remove this in 0.9.0. We allow creating functions or identifiers in Yul with the name
@@ -134,21 +134,21 @@ std::set<YulName> createReservedIdentifiers(langutil::EVMVersion _evmVersion)
 	auto prevRandaoException = [&](std::string const& _instrName) -> bool
 	{
 		// Using string comparison as the opcode is the same as for "difficulty"
-		return _instrName == "prevrandao" && _evmVersion < langutil::EVMVersion::paris();
+		return _instrName == "prevrandao" && _evmVersion < langutil::VMMachineAndVersion::paris();
 	};
 
 	// TODO remove this in 0.9.0. We allow creating functions or identifiers in Yul with the name
 	// blobhash for VMs before cancun.
 	auto blobHashException = [&](evmasm::Instruction _instr) -> bool
 	{
-		return _instr == evmasm::Instruction::BLOBHASH && _evmVersion < langutil::EVMVersion::cancun();
+		return _instr == evmasm::Instruction::BLOBHASH && _evmVersion < langutil::VMMachineAndVersion::cancun();
 	};
 	// TODO remove this in 0.9.0. We allow creating functions or identifiers in Yul with the names
 	// tstore or tload for VMs before cancun.
 	auto transientStorageException = [&](evmasm::Instruction _instr) -> bool
 	{
 		return
-			_evmVersion < langutil::EVMVersion::cancun() &&
+			_evmVersion < langutil::VMMachineAndVersion::cancun() &&
 			(_instr == evmasm::Instruction::TSTORE || _instr == evmasm::Instruction::TLOAD);
 	};
 
@@ -177,13 +177,13 @@ std::set<YulName> createReservedIdentifiers(langutil::EVMVersion _evmVersion)
 	return reserved;
 }
 
-std::map<YulName, BuiltinFunctionForEVM> createBuiltins(langutil::EVMVersion _evmVersion, std::optional<uint8_t> _eofVersion, bool _objectAccess)
+std::map<YulName, BuiltinFunctionForEVM> createBuiltins(langutil::VMMachineAndVersion _evmVersion, std::optional<uint8_t> _eofVersion, bool _objectAccess)
 {
 
 	// Exclude prevrandao as builtin for VMs before paris and difficulty for VMs after paris.
 	auto prevRandaoException = [&](std::string const& _instrName) -> bool
 	{
-		return (_instrName == "prevrandao" && _evmVersion < langutil::EVMVersion::paris()) || (_instrName == "difficulty" && _evmVersion >= langutil::EVMVersion::paris());
+		return (_instrName == "prevrandao" && _evmVersion < langutil::VMMachineAndVersion::paris()) || (_instrName == "difficulty" && _evmVersion >= langutil::VMMachineAndVersion::paris());
 	};
 
 	std::map<YulName, BuiltinFunctionForEVM> builtins;
@@ -358,7 +358,7 @@ std::regex const& verbatimPattern()
 }
 
 
-VMAssemblerLanguage::VMAssemblerLanguage(langutil::EVMVersion _evmVersion, std::optional<uint8_t> _eofVersion, bool _objectAccess):
+VMAssemblerLanguage::VMAssemblerLanguage(langutil::VMMachineAndVersion _evmVersion, std::optional<uint8_t> _eofVersion, bool _objectAccess):
 	m_objectAccess(_objectAccess),
 	m_evmVersion(_evmVersion),
 	m_eofVersion(_eofVersion),
@@ -390,18 +390,18 @@ bool EVMDialect::reservedIdentifier(YulName _name) const
 	return m_reserved.count(_name) != 0;
 }
 
-EVMDialect const& EVMDialect::strictAssemblyForEVM(langutil::EVMVersion _evmVersion, std::optional<uint8_t> _eofVersion)
+EVMDialect const& EVMDialect::strictAssemblyForEVM(langutil::VMMachineAndVersion _evmVersion, std::optional<uint8_t> _eofVersion)
 {
-	static std::map<std::pair<langutil::EVMVersion, std::optional<uint8_t>>, std::unique_ptr<EVMDialect const>> dialects;
+	static std::map<std::pair<langutil::VMMachineAndVersion, std::optional<uint8_t>>, std::unique_ptr<EVMDialect const>> dialects;
 	static YulStringRepository::ResetCallback callback{[&] { dialects.clear(); }};
 	if (!dialects[{_evmVersion, _eofVersion}])
 		dialects[{_evmVersion, _eofVersion}] = std::make_unique<EVMDialect>(_evmVersion, _eofVersion, false);
 	return *dialects[{_evmVersion, _eofVersion}];
 }
 
-EVMDialect const& EVMDialect::strictAssemblyForEVMObjects(langutil::EVMVersion _evmVersion, std::optional<uint8_t> _eofVersion)
+EVMDialect const& EVMDialect::strictAssemblyForEVMObjects(langutil::VMMachineAndVersion _evmVersion, std::optional<uint8_t> _eofVersion)
 {
-	static std::map<std::pair<langutil::EVMVersion, std::optional<uint8_t>>, std::unique_ptr<EVMDialect const>> dialects;
+	static std::map<std::pair<langutil::VMMachineAndVersion, std::optional<uint8_t>>, std::unique_ptr<EVMDialect const>> dialects;
 	static YulStringRepository::ResetCallback callback{[&] { dialects.clear(); }};
 	if (!dialects[{_evmVersion, _eofVersion}])
 		dialects[{_evmVersion, _eofVersion}] = std::make_unique<EVMDialect>(_evmVersion, _eofVersion, true);

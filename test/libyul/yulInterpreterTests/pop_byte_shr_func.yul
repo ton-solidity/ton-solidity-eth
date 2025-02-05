@@ -3,7 +3,7 @@
   pop(byte(0, shr(0x8, f())))
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // Trace:
 // Memory dump:

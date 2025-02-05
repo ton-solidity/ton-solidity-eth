@@ -10,7 +10,7 @@
   }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // step: loopInvariantCodeMotion
 //

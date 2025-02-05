@@ -4,7 +4,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=istanbul
+// VMMachineAndVersion: >=istanbul
 // ----
 // f() -> 1
 // f() -> 1

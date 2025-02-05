@@ -39,7 +39,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // library: "a.sol":L
 // addr() -> false

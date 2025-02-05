@@ -30,7 +30,7 @@ using namespace solidity::evmasm;
 unsigned ConstantOptimisationMethod::optimiseConstants(
 	bool _isCreation,
 	size_t _runs,
-	langutil::EVMVersion _evmVersion,
+	langutil::VMMachineAndVersion _evmVersion,
 	Assembly& _assembly
 )
 {
@@ -81,7 +81,7 @@ unsigned ConstantOptimisationMethod::optimiseConstants(
 	return optimisations;
 }
 
-bigint ConstantOptimisationMethod::simpleRunGas(AssemblyItems const& _items, langutil::EVMVersion _evmVersion)
+bigint ConstantOptimisationMethod::simpleRunGas(AssemblyItems const& _items, langutil::VMMachineAndVersion _evmVersion)
 {
 	bigint gas = 0;
 	for (AssemblyItem const& item: _items)
@@ -103,7 +103,7 @@ bigint ConstantOptimisationMethod::dataGas(bytes const& _data) const
 	return bigint(GasMeter::dataGas(_data, m_params.isCreation, m_params.evmVersion));
 }
 
-size_t ConstantOptimisationMethod::bytesRequired(AssemblyItems const& _items, langutil::EVMVersion _evmVersion)
+size_t ConstantOptimisationMethod::bytesRequired(AssemblyItems const& _items, langutil::VMMachineAndVersion _evmVersion)
 {
 	return evmasm::bytesRequired(_items, 3, _evmVersion, Precision::Approximate); // assume 3 byte addresses
 }

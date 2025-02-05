@@ -32,7 +32,7 @@
 
 #include <libevmasm/Instruction.h>
 
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 #include <evmone/evmone.h>
 
@@ -82,7 +82,7 @@ DEFINE_PROTO_FUZZER(Program const& _input)
 	std::string yul_source = converter.programToString(_input);
 	// Do not fuzz the EVM Version field.
 	// See https://github.com/ethereum/solidity/issues/12590
-	langutil::EVMVersion version;
+	langutil::VMMachineAndVersion version;
 	EVMHost hostContext(version, evmone);
 	hostContext.reset();
 

@@ -25,7 +25,7 @@ contract Test {
     }
 }
 // ====
-// EVMVersion: <=homestead
+// VMMachineAndVersion: <=homestead
 // compileViaYul: true
 // ----
 // test() -> 0x0500

@@ -9,7 +9,7 @@
     tstore(0, 24)
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // step: equalStoreEliminator
 //

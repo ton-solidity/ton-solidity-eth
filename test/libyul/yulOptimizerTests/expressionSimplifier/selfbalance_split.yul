@@ -4,7 +4,7 @@
     sstore(a, ret)
 }
 // ====
-// EVMVersion: >=istanbul
+// VMMachineAndVersion: >=istanbul
 // ----
 // step: expressionSimplifier
 //

@@ -8,6 +8,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // ParserError 6272: (143-145): Cannot assign to builtin function "returndatasize".

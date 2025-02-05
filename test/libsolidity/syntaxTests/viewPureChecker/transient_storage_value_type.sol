@@ -9,7 +9,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // TypeError 8961: (75-76): Function cannot be declared as view because this expression (potentially) modifies the state.
 // TypeError 2527: (148-149): Function declared as pure, but this expression (potentially) reads from the environment or state and thus requires "view".

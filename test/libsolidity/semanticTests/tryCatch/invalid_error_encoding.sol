@@ -148,7 +148,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // f1() -> 2
 // f1a() -> 2

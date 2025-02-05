@@ -6,7 +6,7 @@
 }
 // ====
 // stackOptimization: true
-// EVMVersion: >=shanghai
+// VMMachineAndVersion: >=shanghai
 // ----
 //     /* "":0:88   */
 //   stop

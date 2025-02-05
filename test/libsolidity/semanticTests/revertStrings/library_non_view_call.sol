@@ -9,7 +9,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // revertStrings: debug
 // ----
 // library: L

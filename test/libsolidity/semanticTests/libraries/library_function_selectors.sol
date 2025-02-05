@@ -22,7 +22,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >homestead
+// VMMachineAndVersion: >homestead
 // ----
 // library: L
 // f() -> true, true, 7

@@ -76,7 +76,7 @@ contract D {
 }
 
 // ====
-// EVMVersion: =shanghai
+// VMMachineAndVersion: =shanghai
 // ----
 // constructor(), 1 ether ->
 // gas irOptimized: 133342

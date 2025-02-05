@@ -6,5 +6,5 @@ contract c {
 	}
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----

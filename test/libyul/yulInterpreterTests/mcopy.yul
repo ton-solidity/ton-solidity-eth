@@ -11,7 +11,7 @@
     mcopy(0xa0, 0, 160)  // Duplicate the whole thing
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // Trace:
 //   MCOPY(0, 0, 32)

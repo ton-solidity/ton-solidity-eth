@@ -24,7 +24,7 @@
 #include <libsolutil/Common.h>
 #include <libevmasm/Assembly.h>
 #include <libevmasm/AssemblyItem.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 #include <range/v3/view/span.hpp>
 #include <map>
@@ -42,7 +42,7 @@ public:
 		std::set<size_t> const& _tagsReferencedFromOutside,
 		size_t _runs,
 		bool _isCreation,
-		langutil::EVMVersion _evmVersion
+		langutil::VMMachineAndVersion _evmVersion
 	):
 	m_items(_items),
 	m_tagsReferencedFromOutside(_tagsReferencedFromOutside),
@@ -78,7 +78,7 @@ private:
 	std::set<size_t> const& m_tagsReferencedFromOutside;
 	size_t const m_runs = Assembly::OptimiserSettings{}.expectedExecutionsPerDeployment;
 	bool const m_isCreation = false;
-	langutil::EVMVersion const m_evmVersion;
+	langutil::VMMachineAndVersion const m_evmVersion;
 };
 
 }

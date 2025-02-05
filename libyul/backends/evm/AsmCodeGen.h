@@ -23,7 +23,7 @@
 
 #include <libyul/backends/evm/AbstractAssembly.h>
 #include <libyul/AsmAnalysis.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 namespace solidity::evmasm
 {
@@ -43,7 +43,7 @@ public:
 		Block const& _parsedData,
 		AsmAnalysisInfo& _analysisInfo,
 		evmasm::Assembly& _assembly,
-		langutil::EVMVersion _evmVersion,
+		langutil::VMMachineAndVersion _evmVersion,
 		std::optional<uint8_t> _eofVersion,
 		ExternalIdentifierAccess::CodeGenerator _identifierAccess = {},
 		bool _useNamedLabelsForFunctions = false,

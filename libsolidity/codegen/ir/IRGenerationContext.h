@@ -30,7 +30,7 @@
 
 #include <liblangutil/CharStreamProvider.h>
 #include <liblangutil/DebugInfoSelection.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 #include <libsolutil/Common.h>
 
@@ -57,7 +57,7 @@ public:
 	enum class ExecutionContext { Creation, Deployed };
 
 	IRGenerationContext(
-		langutil::EVMVersion _evmVersion,
+		langutil::VMMachineAndVersion _evmVersion,
 		ExecutionContext _executionContext,
 		RevertStrings _revertStrings,
 		std::map<std::string, unsigned> _sourceIndices,
@@ -133,7 +133,7 @@ public:
 	/// @returns a new copy of the utility function generator (but using the same function set).
 	YulUtilFunctions utils();
 
-	langutil::EVMVersion evmVersion() const { return m_evmVersion; }
+	langutil::VMMachineAndVersion evmVersion() const { return m_evmVersion; }
 	ExecutionContext executionContext() const { return m_executionContext; }
 
 	void setArithmetic(Arithmetic _value) { m_arithmetic = _value; }
@@ -159,7 +159,7 @@ public:
 	langutil::CharStreamProvider const* soliditySourceProvider() const { return m_soliditySourceProvider; }
 
 private:
-	langutil::EVMVersion m_evmVersion;
+	langutil::VMMachineAndVersion m_evmVersion;
 	ExecutionContext m_executionContext;
 	RevertStrings m_revertStrings;
 	std::map<std::string, unsigned> m_sourceIndices;

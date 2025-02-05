@@ -626,7 +626,7 @@ bool AsmAnalyzer::validateInstructions(std::string const& _instructionIdentifier
 {
 	// NOTE: This function uses the default EVM version instead of the currently selected one.
 	// TODO: Add EOF support
-	auto const builtin = EVMDialect::strictAssemblyForEVM(EVMVersion{}, std::nullopt).builtin(YulName(_instructionIdentifier));
+	auto const builtin = EVMDialect::strictAssemblyForEVM(VMMachineAndVersion{}, std::nullopt).builtin(YulName(_instructionIdentifier));
 	if (builtin && builtin->instruction.has_value())
 		return validateInstructions(builtin->instruction.value(), _location);
 	else

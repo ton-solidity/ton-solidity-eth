@@ -7,7 +7,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // x() -> 0
 // f() -> -1

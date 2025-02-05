@@ -24,7 +24,7 @@
 #include <liblangutil/CharStreamProvider.h>
 #include <liblangutil/DebugInfoSelection.h>
 #include <liblangutil/ErrorReporter.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 #include <libsolutil/JSON.h>
 
 #include <libyul/Object.h>
@@ -76,7 +76,7 @@ public:
 
 	YulStack():
 		YulStack(
-			langutil::EVMVersion{},
+			langutil::VMMachineAndVersion{},
 			std::nullopt,
 			Language::Assembly,
 			solidity::frontend::OptimiserSettings::none(),
@@ -85,7 +85,7 @@ public:
 	{}
 
 	YulStack(
-		langutil::EVMVersion _evmVersion,
+		langutil::VMMachineAndVersion _evmVersion,
 		std::optional<uint8_t> _eofVersion,
 		Language _language,
 		solidity::frontend::OptimiserSettings _optimiserSettings,
@@ -167,7 +167,7 @@ private:
 	void reportUnimplementedFeatureError(langutil::UnimplementedFeatureError const& _error);
 
 	Language m_language = Language::Assembly;
-	langutil::EVMVersion m_evmVersion;
+	langutil::VMMachineAndVersion m_evmVersion;
 	std::optional<uint8_t> m_eofVersion;
 	solidity::frontend::OptimiserSettings m_optimiserSettings;
 	langutil::DebugInfoSelection m_debugInfoSelection{};

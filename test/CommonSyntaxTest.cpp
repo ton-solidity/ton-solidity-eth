@@ -63,7 +63,7 @@ int parseUnsignedInteger(std::string::iterator& _it, std::string::iterator _end)
 
 }
 
-CommonSyntaxTest::CommonSyntaxTest(std::string const& _filename, langutil::EVMVersion _evmVersion):
+CommonSyntaxTest::CommonSyntaxTest(std::string const& _filename, langutil::VMMachineAndVersion _evmVersion):
 	EVMVersionRestrictedTestCase(_filename),
 	m_sources(m_reader.sources()),
 	m_expectations(parseExpectations(m_reader.stream())),

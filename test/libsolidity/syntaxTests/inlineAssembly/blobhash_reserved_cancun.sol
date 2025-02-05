@@ -9,6 +9,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // ParserError 5568: (103-111): Cannot use builtin function name "blobhash" as identifier name.

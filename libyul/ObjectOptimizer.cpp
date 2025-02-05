@@ -43,7 +43,7 @@ using namespace solidity::util;
 using namespace solidity::yul;
 
 
-Dialect const& yul::languageToDialect(Language _language, EVMVersion _version, std::optional<uint8_t> _eofVersion)
+Dialect const& yul::languageToDialect(Language _language, VMMachineAndVersion _version, std::optional<uint8_t> _eofVersion)
 {
 	switch (_language)
 	{

@@ -5,7 +5,7 @@
   mstore(0x60, balance(add(address(), 1)))
 }
 // ====
-// EVMVersion: >=istanbul
+// VMMachineAndVersion: >=istanbul
 // ----
 // Trace:
 // Memory dump:

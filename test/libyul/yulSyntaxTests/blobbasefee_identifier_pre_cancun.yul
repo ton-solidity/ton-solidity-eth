@@ -2,5 +2,5 @@
     function blobbasefee() {}
 }
 // ====
-// EVMVersion: <=shanghai
+// VMMachineAndVersion: <=shanghai
 // ----

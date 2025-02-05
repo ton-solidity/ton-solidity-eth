@@ -13,7 +13,7 @@
     }
 }
 // ====
-// EVMVersion: >=shanghai
+// VMMachineAndVersion: >=shanghai
 // ----
 // step: fullSuite
 //

@@ -57,7 +57,7 @@ contract C {
 	}
 }
 // ====
-// EVMVersion: >homestead
+// VMMachineAndVersion: >homestead
 // ----
 // test_bytes() ->
 // gas irOptimized: 314884

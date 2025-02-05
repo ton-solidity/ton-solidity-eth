@@ -19,7 +19,7 @@
 #pragma once
 
 #include <libsolutil/Exceptions.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 #include <liblangutil/Exceptions.h>
 #include <libsolutil/Numeric.h>
 
@@ -64,7 +64,7 @@ struct CommonOptions
 	size_t batches = 1;
 	size_t selectedBatch = 0;
 
-	langutil::EVMVersion evmVersion() const;
+	langutil::VMMachineAndVersion evmVersion() const;
 	std::optional<uint8_t> eofVersion() const { return m_eofVersion; }
 
 	virtual void addOptions();
@@ -104,7 +104,7 @@ bool isValidSemanticTestPath(boost::filesystem::path const& _testPath);
 /// Helper that can be used to skip tests when the EVM version selected on the command line
 /// is older than @p _minEVMVersion.
 /// @return A predicate (function) that can be passed into @a boost::unit_test::precondition().
-boost::unit_test::precondition::predicate_t minEVMVersionCheck(langutil::EVMVersion _minEVMVersion);
+boost::unit_test::precondition::predicate_t minEVMVersionCheck(langutil::VMMachineAndVersion _minEVMVersion);
 
 bool loadVMs(CommonOptions const& _options);
 

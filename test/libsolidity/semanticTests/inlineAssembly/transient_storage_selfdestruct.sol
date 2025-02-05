@@ -37,7 +37,7 @@ contract D {
     }
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // constructor() ->
 // gas irOptimized: 127596

@@ -16,6 +16,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // ParserError 5568: (101-106): Cannot use builtin function name "mcopy" as identifier name.

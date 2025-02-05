@@ -10,7 +10,7 @@
     }
 }
 // ====
-// EVMVersion: <=homestead
+// VMMachineAndVersion: <=homestead
 // ----
 // step: fullInliner
 //

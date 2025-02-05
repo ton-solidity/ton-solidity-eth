@@ -53,7 +53,7 @@ TestCase::TestResult EVMCodeTransformTest::run(std::ostream& _stream, std::strin
 	settings.runYulOptimiser = false;
 	settings.optimizeStackAllocation = m_stackOpt;
 	YulStack stack(
-		EVMVersion{},
+		VMMachineAndVersion{},
 		std::nullopt,
 		YulStack::Language::StrictAssembly,
 		settings,
@@ -74,7 +74,7 @@ TestCase::TestResult EVMCodeTransformTest::run(std::ostream& _stream, std::strin
 		*stack.parserResult(),
 		adapter,
 		// TODO: Make sure that why we cannot pass here solidity::test::CommonOptions::get().evmVersion() and assembly.eofVersion()
-		EVMDialect::strictAssemblyForEVMObjects(EVMVersion{}, std::nullopt),
+		EVMDialect::strictAssemblyForEVMObjects(VMMachineAndVersion{}, std::nullopt),
 		m_stackOpt,
 		std::nullopt
 	);

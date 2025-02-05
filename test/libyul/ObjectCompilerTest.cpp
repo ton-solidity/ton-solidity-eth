@@ -65,7 +65,7 @@ ObjectCompilerTest::ObjectCompilerTest(std::string const& _filename):
 TestCase::TestResult ObjectCompilerTest::run(std::ostream& _stream, std::string const& _linePrefix, bool const _formatted)
 {
 	YulStack stack(
-		EVMVersion(),
+		VMMachineAndVersion(),
 		std::nullopt,
 		YulStack::Language::StrictAssembly,
 		OptimiserSettings::preset(m_optimisationPreset),

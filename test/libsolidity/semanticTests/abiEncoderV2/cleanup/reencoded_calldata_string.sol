@@ -22,6 +22,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >homestead
+// VMMachineAndVersion: >homestead
 // ----
 // test() -> 0x20, 0x60, 0x20, 3, "abc"

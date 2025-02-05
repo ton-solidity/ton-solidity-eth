@@ -228,7 +228,7 @@ void CompilerStack::setViaIR(bool _viaIR)
 	m_viaIR = _viaIR;
 }
 
-void CompilerStack::setEVMVersion(langutil::EVMVersion _version)
+void CompilerStack::setEVMVersion(langutil::VMMachineAndVersion _version)
 {
 	solAssert(m_stackState < ParsedAndImported, "Must set EVM version before parsing.");
 	m_evmVersion = _version;
@@ -318,7 +318,7 @@ void CompilerStack::reset(bool _keepSettings)
 		m_importRemapper.clear();
 		m_libraries.clear();
 		m_viaIR = false;
-		m_evmVersion = langutil::EVMVersion();
+		m_evmVersion = langutil::VMMachineAndVersion();
 		m_eofVersion.reset();
 		m_modelCheckerSettings = ModelCheckerSettings{};
 		m_selectedContracts.clear();
@@ -1434,7 +1434,7 @@ void CompilerStack::assembleYul(
 	//   If contract creation returns data with length greater than 0x6000 (2^14 + 2^13) bytes,
 	//   contract creation fails with an out of gas error.
 	if (
-		m_evmVersion >= langutil::EVMVersion::spuriousDragon() &&
+		m_evmVersion >= langutil::VMMachineAndVersion::spuriousDragon() &&
 		compiledContract.runtimeObject.bytecode.size() > 0x6000
 	)
 		m_errorReporter.warning(
@@ -1452,7 +1452,7 @@ void CompilerStack::assembleYul(
 	//   If initcode is larger than 0xC000 bytes (twice the runtime code limit),
 	//   then contract creation fails with an out of gas error.
 	if (
-		m_evmVersion >= langutil::EVMVersion::shanghai() &&
+		m_evmVersion >= langutil::VMMachineAndVersion::shanghai() &&
 		compiledContract.object.bytecode.size() > 0xC000
 	)
 		m_errorReporter.warning(

@@ -15,7 +15,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >homestead
+// VMMachineAndVersion: >homestead
 // ----
 // f(uint256[3]): 23, 42, 87 -> 32, 96, 23, 42, 87
 // g(uint256[3]): 23, 42, 87 -> 32, 96, 23, 42, 87

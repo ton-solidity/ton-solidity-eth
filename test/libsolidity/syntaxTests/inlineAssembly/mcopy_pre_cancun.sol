@@ -6,6 +6,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: =shanghai
+// VMMachineAndVersion: =shanghai
 // ----
 // TypeError 7755: (75-80): The "mcopy" instruction is only available for Cancun-compatible VMs (you are currently compiling for "shanghai").

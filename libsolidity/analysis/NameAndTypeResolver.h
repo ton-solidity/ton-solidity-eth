@@ -29,7 +29,7 @@
 #include <libsolidity/ast/ASTAnnotations.h>
 #include <libsolidity/ast/ASTVisitor.h>
 
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 #include <list>
 #include <map>
@@ -58,7 +58,7 @@ public:
 	/// are filled during the lifetime of this object.
 	NameAndTypeResolver(
 		GlobalContext& _globalContext,
-		langutil::EVMVersion _evmVersion,
+		langutil::VMMachineAndVersion _evmVersion,
 		langutil::ErrorReporter& _errorReporter,
 		bool _experimentalSolidity
 	);
@@ -130,7 +130,7 @@ private:
 	/// Aliases (for example `import "x" as y;`) create multiple pointers to the same scope.
 	std::map<ASTNode const*, std::shared_ptr<DeclarationContainer>> m_scopes;
 
-	langutil::EVMVersion m_evmVersion;
+	langutil::VMMachineAndVersion m_evmVersion;
 	DeclarationContainer* m_currentScope = nullptr;
 	langutil::ErrorReporter& m_errorReporter;
 	GlobalContext& m_globalContext;

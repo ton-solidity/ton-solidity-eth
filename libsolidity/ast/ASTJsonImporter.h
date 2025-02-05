@@ -27,7 +27,7 @@
 #include <libsolutil/JSON.h>
 #include <libsolidity/ast/AST.h>
 #include <libsolidity/ast/ASTAnnotations.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 #include <liblangutil/Exceptions.h>
 #include <liblangutil/SourceLocation.h>
 
@@ -40,7 +40,7 @@ namespace solidity::frontend
 class ASTJsonImporter
 {
 public:
-	ASTJsonImporter(langutil::EVMVersion _evmVersion, std::optional<uint8_t> _eofVersion)
+	ASTJsonImporter(langutil::VMMachineAndVersion _evmVersion, std::optional<uint8_t> _eofVersion)
 		:m_evmVersion(_evmVersion), m_eofVersion(_eofVersion)
 	{}
 
@@ -165,7 +165,7 @@ private:
 	/// IDs already used by the nodes
 	std::set<int64_t> m_usedIDs;
 	/// Configured EVM version
-	langutil::EVMVersion m_evmVersion;
+	langutil::VMMachineAndVersion m_evmVersion;
 	/// Configured EOF version. Equals std::nullopt if non-EOF
 	std::optional<uint8_t> m_eofVersion;
 };

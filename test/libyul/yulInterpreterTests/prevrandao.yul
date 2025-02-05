@@ -2,7 +2,7 @@
   sstore(0, prevrandao())
 }
 // ====
-// EVMVersion: >=paris
+// VMMachineAndVersion: >=paris
 // ----
 // Trace:
 // Memory dump:

@@ -91,36 +91,36 @@ std::string ProtoConverter::createAlphaNum(std::string const& _strBytes)
 	return tmp;
 }
 
-EVMVersion ProtoConverter::evmVersionMapping(Program_Version const& _ver)
+VMMachineAndVersion ProtoConverter::evmVersionMapping(Program_Version const& _ver)
 {
 	switch (_ver)
 	{
 	case Program::HOMESTEAD:
-		return EVMVersion::homestead();
+		return VMMachineAndVersion::homestead();
 	case Program::TANGERINE:
-		return EVMVersion::tangerineWhistle();
+		return VMMachineAndVersion::tangerineWhistle();
 	case Program::SPURIOUS:
-		return EVMVersion::spuriousDragon();
+		return VMMachineAndVersion::spuriousDragon();
 	case Program::BYZANTIUM:
-		return EVMVersion::byzantium();
+		return VMMachineAndVersion::byzantium();
 	case Program::CONSTANTINOPLE:
-		return EVMVersion::constantinople();
+		return VMMachineAndVersion::constantinople();
 	case Program::PETERSBURG:
-		return EVMVersion::petersburg();
+		return VMMachineAndVersion::petersburg();
 	case Program::ISTANBUL:
-		return EVMVersion::istanbul();
+		return VMMachineAndVersion::istanbul();
 	case Program::BERLIN:
-		return EVMVersion::berlin();
+		return VMMachineAndVersion::berlin();
 	case Program::LONDON:
-		return EVMVersion::london();
+		return VMMachineAndVersion::london();
 	case Program::PARIS:
-		return EVMVersion::paris();
+		return VMMachineAndVersion::paris();
 	case Program::SHANGHAI:
-		return EVMVersion::shanghai();
+		return VMMachineAndVersion::shanghai();
 	case Program::CANCUN:
-		return EVMVersion::cancun();
+		return VMMachineAndVersion::cancun();
 	case Program::PRAGUE:
-		return EVMVersion::prague();
+		return VMMachineAndVersion::prague();
 	}
 }
 
@@ -758,7 +758,7 @@ void ProtoConverter::visit(NullaryOp const& _x)
 		m_output << "number()";
 		break;
 	case NullaryOp::DIFFICULTY:
-		if (m_evmVersion >= EVMVersion::paris())
+		if (m_evmVersion >= VMMachineAndVersion::paris())
 			m_output << "prevrandao()";
 		else
 			m_output << "difficulty()";

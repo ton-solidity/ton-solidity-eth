@@ -21,7 +21,7 @@
 
 #pragma once
 
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 #include <libsolidity/ast/Types.h>
 #include <libsolidity/ast/AST.h>
@@ -51,7 +51,7 @@ class YulUtilFunctions
 {
 public:
 	explicit YulUtilFunctions(
-		langutil::EVMVersion _evmVersion,
+		langutil::VMMachineAndVersion _evmVersion,
 		RevertStrings _revertStrings,
 		MultiUseYulFunctionCollector& _functionCollector
 	):
@@ -639,7 +639,7 @@ private:
 	/// signature: (array, index)
 	std::string longByteArrayStorageIndexAccessNoCheckFunction();
 
-	langutil::EVMVersion m_evmVersion;
+	langutil::VMMachineAndVersion m_evmVersion;
 	RevertStrings m_revertStrings;
 	MultiUseYulFunctionCollector& m_functionCollector;
 };

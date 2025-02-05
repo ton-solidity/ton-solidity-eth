@@ -45,7 +45,7 @@ namespace solidity::yul
 class NoOutputAssembly: public AbstractAssembly
 {
 public:
-	explicit NoOutputAssembly(langutil::EVMVersion _evmVersion): m_evmVersion(_evmVersion) { }
+	explicit NoOutputAssembly(langutil::VMMachineAndVersion _evmVersion): m_evmVersion(_evmVersion) { }
 	~NoOutputAssembly() override = default;
 
 	void setSourceLocation(langutil::SourceLocation const&) override {}
@@ -77,11 +77,11 @@ public:
 
 	void markAsInvalid() override {}
 
-	langutil::EVMVersion evmVersion() const override { return m_evmVersion; }
+	langutil::VMMachineAndVersion evmVersion() const override { return m_evmVersion; }
 
 private:
 	int m_stackHeight = 0;
-	langutil::EVMVersion m_evmVersion;
+	langutil::VMMachineAndVersion m_evmVersion;
 };
 
 

@@ -7,6 +7,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // ParserError 5568: (98-109): Cannot use builtin function name "blobbasefee" as identifier name.

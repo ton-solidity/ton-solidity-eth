@@ -4,7 +4,7 @@
     sstore(0, msize())
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // Trace:
 //   MCOPY(48, 48, 0)

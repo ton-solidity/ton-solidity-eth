@@ -5,7 +5,7 @@
     mstore(0, eq(a, b))
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // Trace:
 //   CREATE2(0, 0, 0, 0)

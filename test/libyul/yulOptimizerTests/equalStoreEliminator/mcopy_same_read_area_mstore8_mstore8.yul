@@ -11,7 +11,7 @@
     mstore8(_0, mem31)
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // step: equalStoreEliminator
 //

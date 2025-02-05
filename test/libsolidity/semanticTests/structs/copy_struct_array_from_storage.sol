@@ -84,7 +84,7 @@ contract Test {
     }
 }
 // ====
-// EVMVersion: >homestead
+// VMMachineAndVersion: >homestead
 // ----
 // test1() -> true
 // gas irOptimized: 152965

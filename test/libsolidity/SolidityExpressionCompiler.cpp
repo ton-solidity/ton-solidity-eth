@@ -658,7 +658,7 @@ BOOST_AUTO_TEST_CASE(blockhash)
 
 BOOST_AUTO_TEST_CASE(
 	blobhash,
-	*boost::unit_test::precondition(minEVMVersionCheck(EVMVersion::cancun()))
+	*boost::unit_test::precondition(minEVMVersionCheck(VMMachineAndVersion::cancun()))
 )
 {
 	char const* sourceCode = R"(

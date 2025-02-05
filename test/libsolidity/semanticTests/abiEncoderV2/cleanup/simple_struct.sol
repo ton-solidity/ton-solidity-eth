@@ -16,7 +16,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >homestead
+// VMMachineAndVersion: >homestead
 // ----
 // f(uint256,bytes32): 1, left(0x01) -> 0x20, 0x44, hex"b63240b0", 1, left(0x01), hex"00000000000000000000000000000000000000000000000000000000"
 // gg((uint8,bytes1)): 1, left(0x01) -> 0x20, 0x44, hex"b63240b0", 1, left(0x01), hex"00000000000000000000000000000000000000000000000000000000"

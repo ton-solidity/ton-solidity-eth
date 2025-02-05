@@ -11,7 +11,7 @@ contract C
 }
 
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // compileViaYul: true
 // ----
 // Warning 2264: (std.stub:63-92): Experimental features are turned on. Do not use experimental features on live deployments.

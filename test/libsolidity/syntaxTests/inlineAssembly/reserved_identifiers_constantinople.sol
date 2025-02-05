@@ -9,6 +9,6 @@ contract C {
   }
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // ParserError 5568: (67-70): Cannot use builtin function name "shl" as identifier name.

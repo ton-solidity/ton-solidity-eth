@@ -3,6 +3,6 @@ contract C {
     uint public transient x;
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // DeclarationError 2333: (36-59): Identifier already declared.

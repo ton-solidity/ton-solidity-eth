@@ -28,7 +28,7 @@
 #include <test/EVMHost.h>
 
 #include <liblangutil/Exceptions.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 #include <libevmasm/Assembly.h>
 

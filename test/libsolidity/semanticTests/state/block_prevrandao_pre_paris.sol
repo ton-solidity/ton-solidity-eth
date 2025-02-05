@@ -4,6 +4,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: <paris
+// VMMachineAndVersion: <paris
 // ----
 // f() -> 200000000

@@ -5,5 +5,5 @@ contract C {
     }
 }
 // ====
-// EVMVersion: <=shanghai
+// VMMachineAndVersion: <=shanghai
 // ----

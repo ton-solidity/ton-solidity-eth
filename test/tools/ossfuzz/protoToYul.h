@@ -32,7 +32,7 @@
 #include <libsolutil/FixedHash.h>
 #include <libsolutil/Whiskers.h>
 
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 namespace solidity::yul::test::yul_fuzzer
 {
@@ -65,7 +65,7 @@ public:
 	std::string programToString(Program const& _input);
 
 	/// Returns evm version
-	solidity::langutil::EVMVersion version()
+	solidity::langutil::VMMachineAndVersion version()
 	{
 		return m_evmVersion;
 	}
@@ -269,9 +269,9 @@ private:
 	/// dictionarySize is the total number of entries in the dictionary.
 	std::string dictionaryToken(util::HexPrefix _p = util::HexPrefix::Add);
 
-	/// Returns an EVMVersion object corresponding to the protobuf
+	/// Returns an VMMachineAndVersion object corresponding to the protobuf
 	/// enum of type Program_Version
-	static solidity::langutil::EVMVersion evmVersionMapping(Program_Version const& _x);
+	static solidity::langutil::VMMachineAndVersion evmVersionMapping(Program_Version const& _x);
 
 	/// @returns name of Yul function with return type of @param _numReturns.
 	std::optional<std::string> functionExists(NumFunctionReturns _numReturns);
@@ -382,7 +382,7 @@ private:
 	/// block is enabled.
 	bool m_forInitScopeExtEnabled;
 	/// Object that holds the targeted evm version specified by protobuf input
-	solidity::langutil::EVMVersion m_evmVersion;
+	solidity::langutil::VMMachineAndVersion m_evmVersion;
 	/// Flag that, if set, stops the converter from generating state changing
 	/// opcodes.
 	bool m_filterStatefulInstructions;

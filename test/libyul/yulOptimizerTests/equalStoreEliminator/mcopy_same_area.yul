@@ -7,7 +7,7 @@
     mcopy(_0, _0, _32) // Redundant (no-op)
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // step: equalStoreEliminator
 //

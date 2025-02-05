@@ -31,7 +31,7 @@ class YulAssembler
 {
 public:
 	YulAssembler(
-		langutil::EVMVersion _evmVersion,
+		langutil::VMMachineAndVersion _evmVersion,
 		std::optional<uint8_t> _eofVersion,
 		solidity::frontend::OptimiserSettings _optSettings,
 		std::string const& _yulSource

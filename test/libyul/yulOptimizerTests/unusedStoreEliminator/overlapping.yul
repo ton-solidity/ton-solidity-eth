@@ -6,7 +6,7 @@
     revert(_1, 0x24)
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // step: unusedStoreEliminator
 //

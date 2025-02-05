@@ -771,7 +771,7 @@ bool CommandLineInterface::parseArguments(int _argc, char const* const* _argv)
 
 void CommandLineInterface::processInput()
 {
-	if (m_options.output.evmVersion < EVMVersion::constantinople())
+	if (m_options.output.evmVersion < VMMachineAndVersion::constantinople())
 		report(
 			Error::Severity::Warning,
 			"Support for EVM versions older than constantinople is deprecated and will be removed in the future."
@@ -1219,7 +1219,7 @@ std::string CommandLineInterface::objectWithLinkRefsHex(evmasm::LinkerObject con
 	return out;
 }
 
-void CommandLineInterface::assembleYul(yul::YulStack::Language _language) 
+void CommandLineInterface::assembleYul(yul::YulStack::Language _language)
 {
 	solAssert(m_options.input.mode == InputMode::Assembler);
 

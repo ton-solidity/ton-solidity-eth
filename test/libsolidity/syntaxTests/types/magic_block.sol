@@ -16,6 +16,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: <istanbul
+// VMMachineAndVersion: <istanbul
 // ----
 // TypeError 3081: (420-433): "chainid" is not supported by the VM version.

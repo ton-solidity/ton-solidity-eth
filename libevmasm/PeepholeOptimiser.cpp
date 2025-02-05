@@ -38,7 +38,7 @@ struct OptimiserState
 	AssemblyItems const& items;
 	size_t i;
 	std::back_insert_iterator<AssemblyItems> out;
-	langutil::EVMVersion evmVersion = langutil::EVMVersion();
+	langutil::VMMachineAndVersion evmVersion = langutil::VMMachineAndVersion();
 };
 
 template<typename FunctionType>
@@ -117,9 +117,9 @@ struct OpPop: SimplePeepholeOptimizerMethod<OpPop>
 		if (_pop == Instruction::POP && _op.type() == Operation)
 		{
 			Instruction instr = _op.instruction();
-			if (instructionInfo(instr, langutil::EVMVersion()).ret == 1 && !instructionInfo(instr, langutil::EVMVersion()).sideEffects)
+			if (instructionInfo(instr, langutil::VMMachineAndVersion()).ret == 1 && !instructionInfo(instr, langutil::VMMachineAndVersion()).sideEffects)
 			{
-				for (int j = 0; j < instructionInfo(instr, langutil::EVMVersion()).args; j++)
+				for (int j = 0; j < instructionInfo(instr, langutil::VMMachineAndVersion()).args; j++)
 					*_out = {Instruction::POP, _op.debugData()};
 				return true;
 			}
@@ -141,7 +141,7 @@ struct OpStop: SimplePeepholeOptimizerMethod<OpStop>
 			if (_op.type() == Operation)
 			{
 				Instruction instr = _op.instruction();
-				if (!instructionInfo(instr, langutil::EVMVersion()).sideEffects)
+				if (!instructionInfo(instr, langutil::VMMachineAndVersion()).sideEffects)
 				{
 					*_out = {Instruction::STOP, _op.debugData()};
 					return true;
@@ -173,7 +173,7 @@ struct OpReturnRevert: SimplePeepholeOptimizerMethod<OpReturnRevert>
 			(_pushOrDup.type() == Push || _pushOrDup == dupInstruction(1))
 		)
 			if (
-				(_op.type() == Operation && !instructionInfo(_op.instruction(), langutil::EVMVersion()).sideEffects) ||
+				(_op.type() == Operation && !instructionInfo(_op.instruction(), langutil::VMMachineAndVersion()).sideEffects) ||
 				_op.type() == Push
 			)
 			{

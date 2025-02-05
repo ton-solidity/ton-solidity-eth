@@ -67,7 +67,7 @@ public:
 
 	void markAsInvalid() override;
 
-	langutil::EVMVersion evmVersion() const override;
+	langutil::VMMachineAndVersion evmVersion() const override;
 
 
 private:

@@ -7,6 +7,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // TypeError 2943: (94-123): Expected `catch Error(string memory ...) { ... }`.

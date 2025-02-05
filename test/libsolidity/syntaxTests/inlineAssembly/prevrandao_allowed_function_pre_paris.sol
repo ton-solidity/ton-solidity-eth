@@ -16,5 +16,5 @@ contract C {
     }
 }
 // ====
-// EVMVersion: <paris
+// VMMachineAndVersion: <paris
 // ----

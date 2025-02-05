@@ -4,6 +4,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // f(uint256): 7 -> 28

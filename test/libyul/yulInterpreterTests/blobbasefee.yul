@@ -2,7 +2,7 @@
 	sstore(0, blobbasefee())
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // Trace:
 // Memory dump:

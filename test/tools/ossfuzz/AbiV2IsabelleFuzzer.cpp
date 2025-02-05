@@ -56,7 +56,7 @@ DEFINE_PROTO_FUZZER(Contract const& _contract)
 		solAssert(encodeStatus, "Isabelle abicoder fuzzer: Encoding failed");
 
 		// We target the default EVM which is the latest
-		langutil::EVMVersion version;
+		langutil::VMMachineAndVersion version;
 		EVMHost hostContext(version, evmone);
 		std::string contractName = "C";
 		StringMap source({{"test.sol", contractSource}});

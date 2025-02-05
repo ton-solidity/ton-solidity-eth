@@ -564,7 +564,7 @@ std::pair<std::shared_ptr<Assembly>, std::vector<std::string>> Assembly::fromJSO
 			"Member 'sourceList' may only be present in the root JSON object."
 		);
 
-	auto result = std::make_shared<Assembly>(EVMVersion{}, _level == 0 /* _creation */, _eofVersion, "" /* _name */);
+	auto result = std::make_shared<Assembly>(VMMachineAndVersion{}, _level == 0 /* _creation */, _eofVersion, "" /* _name */);
 	std::vector<std::string> parsedSourceList;
 	if (_json.contains("sourceList"))
 	{
@@ -1476,7 +1476,7 @@ Assembly const* Assembly::subAssemblyById(size_t _subId) const
 	return currentAssembly;
 }
 
-Assembly::OptimiserSettings Assembly::OptimiserSettings::translateSettings(frontend::OptimiserSettings const& _settings, langutil::EVMVersion const& _evmVersion)
+Assembly::OptimiserSettings Assembly::OptimiserSettings::translateSettings(frontend::OptimiserSettings const& _settings, langutil::VMMachineAndVersion const& _evmVersion)
 {
 	// Constructing it this way so that we notice changes in the fields.
 	evmasm::Assembly::OptimiserSettings asmSettings{false,  false, false, false, false, false, _evmVersion, 0};

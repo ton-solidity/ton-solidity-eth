@@ -146,11 +146,11 @@ void CommonOptions::validate() const
 
 	if (!enforceGasTest)
 		std::cout << std::endl << "WARNING :: Gas cost expectations are not being enforced" << std::endl << std::endl;
-	else if (evmVersion() != langutil::EVMVersion{} || useABIEncoderV1)
+	else if (evmVersion() != langutil::VMMachineAndVersion{} || useABIEncoderV1)
 	{
 		std::cout << std::endl << "WARNING :: Enforcing gas cost expectations with non-standard settings:" << std::endl;
-		if (evmVersion() != langutil::EVMVersion{})
-			std::cout << "- EVM version: " << evmVersion().name() << " (default: " << langutil::EVMVersion{}.name() << ")" << std::endl;
+		if (evmVersion() != langutil::VMMachineAndVersion{})
+			std::cout << "- EVM version: " << evmVersion().name() << " (default: " << langutil::VMMachineAndVersion{}.name() << ")" << std::endl;
 		if (useABIEncoderV1)
 			std::cout << "- ABI coder: v1 (default: v2)" << std::endl;
 		std::cout << std::endl << "DO NOT COMMIT THE UPDATED EXPECTATIONS." << std::endl << std::endl;
@@ -245,17 +245,17 @@ void CommonOptions::printSelectedOptions(std::ostream& _stream, std::string cons
 	_stream << _linePrefix << "Run Settings: " << toString(_selectedOptions) << std::endl;
 }
 
-langutil::EVMVersion CommonOptions::evmVersion() const
+langutil::VMMachineAndVersion CommonOptions::evmVersion() const
 {
 	if (!evmVersionString.empty())
 	{
-		auto version = langutil::EVMVersion::fromString(evmVersionString);
+		auto version = langutil::VMMachineAndVersion::fromString(evmVersionString);
 		if (!version)
 			BOOST_THROW_EXCEPTION(std::runtime_error("Invalid EVM version: " + evmVersionString));
 		return *version;
 	}
 	else
-		return langutil::EVMVersion();
+		return langutil::VMMachineAndVersion();
 }
 
 CommonOptions const& CommonOptions::get()
@@ -288,7 +288,7 @@ bool isValidSemanticTestPath(boost::filesystem::path const& _testPath)
 	return true;
 }
 
-boost::unit_test::precondition::predicate_t minEVMVersionCheck(langutil::EVMVersion _minEVMVersion)
+boost::unit_test::precondition::predicate_t minEVMVersionCheck(langutil::VMMachineAndVersion _minEVMVersion)
 {
 	return [_minEVMVersion](boost::unit_test::test_unit_id) {
 		return test::CommonOptions::get().evmVersion() >= _minEVMVersion;

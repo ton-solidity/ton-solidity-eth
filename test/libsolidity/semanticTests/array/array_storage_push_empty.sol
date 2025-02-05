@@ -9,7 +9,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=petersburg
+// VMMachineAndVersion: >=petersburg
 // ----
 // pushEmpty(uint256): 128
 // gas irOptimized: 410745

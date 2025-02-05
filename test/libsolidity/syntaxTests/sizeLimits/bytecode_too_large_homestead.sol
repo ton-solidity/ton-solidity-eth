@@ -5,5 +5,5 @@ contract test {
     }
 }
 // ====
-// EVMVersion: =homestead
+// VMMachineAndVersion: =homestead
 // ----

@@ -10,7 +10,7 @@ contract test {
 	}
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // f(uint256,uint256): 0, 6 -> 7
 // f(uint256,uint256): 1, 3 -> 11

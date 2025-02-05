@@ -46,7 +46,7 @@ namespace
 {
 /// @returns an estimation of the runtime gas cost of the AssemblyItems in @a _itemRange.
 template<typename RangeType>
-u256 executionCost(RangeType const& _itemRange, langutil::EVMVersion _evmVersion)
+u256 executionCost(RangeType const& _itemRange, langutil::VMMachineAndVersion _evmVersion)
 {
 	GasMeter gasMeter{std::make_shared<KnownState>(), _evmVersion};
 	auto gasConsumption = ranges::accumulate(_itemRange | ranges::views::transform(
@@ -59,7 +59,7 @@ u256 executionCost(RangeType const& _itemRange, langutil::EVMVersion _evmVersion
 }
 /// @returns an estimation of the code size in bytes needed for the AssemblyItems in @a _itemRange.
 template<typename RangeType>
-uint64_t codeSize(RangeType const& _itemRange, langutil::EVMVersion _evmVersion)
+uint64_t codeSize(RangeType const& _itemRange, langutil::VMMachineAndVersion _evmVersion)
 {
 	return ranges::accumulate(_itemRange | ranges::views::transform(
 		[&](auto const& _item) { return _item.bytesRequired(2, _evmVersion, Precision::Approximate); }

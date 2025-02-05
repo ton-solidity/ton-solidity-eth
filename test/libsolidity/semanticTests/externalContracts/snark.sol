@@ -288,7 +288,7 @@ contract Test {
 /// testMul() -> true
 //
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // library: Pairing
 // f() -> true

@@ -29,7 +29,7 @@ contract C {
 	}
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // f(bool): true -> true
 // f(bool): false -> FAILURE

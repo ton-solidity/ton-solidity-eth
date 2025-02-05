@@ -30,7 +30,7 @@
 #include <libevmasm/ExpressionClasses.h>
 #include <libevmasm/AssemblyItem.h>
 
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 #include <ostream>
 #include <tuple>
@@ -55,9 +55,9 @@ namespace GasCosts
 	static unsigned const tier5Gas = 10;                      // GAS_HIGH
 	static unsigned const tier6Gas = 20;                      // GAS_BLOCK_HASH
 	static unsigned const expGas = 10;                        // GAS_EXPONENTIATION
-	inline unsigned expByteGas(langutil::EVMVersion _evmVersion)
+	inline unsigned expByteGas(langutil::VMMachineAndVersion _evmVersion)
 	{
-		return _evmVersion >= langutil::EVMVersion::spuriousDragon() ? 50 : 10; // GAS_EXPONENTIATION_PER_BYTE
+		return _evmVersion >= langutil::VMMachineAndVersion::spuriousDragon() ? 50 : 10; // GAS_EXPONENTIATION_PER_BYTE
 	}
 	static unsigned const keccak256Gas = 30;                  // GAS_KECCAK256
 	static unsigned const keccak256WordGas = 6;               // GAS_KECCAK256_WORD
@@ -71,13 +71,13 @@ namespace GasCosts
 	static unsigned const coldAccountAccessCost = 2600;       // GAS_COLD_ACCOUNT_ACCESS
 	/// Corresponds to WARM_STORAGE_READ_COST from EIP-2929
 	static unsigned const warmStorageReadCost = 100;          // GAS_WARM_ACCESS
-	inline unsigned sloadGas(langutil::EVMVersion _evmVersion)
+	inline unsigned sloadGas(langutil::VMMachineAndVersion _evmVersion)
 	{
-		if (_evmVersion >= langutil::EVMVersion::berlin())
+		if (_evmVersion >= langutil::VMMachineAndVersion::berlin())
 			return coldSloadCost;
-		else if (_evmVersion >= langutil::EVMVersion::istanbul())
+		else if (_evmVersion >= langutil::VMMachineAndVersion::istanbul())
 			return 800;
-		else if (_evmVersion >= langutil::EVMVersion::tangerineWhistle())
+		else if (_evmVersion >= langutil::VMMachineAndVersion::tangerineWhistle())
 			return 200;
 		else
 			return 50;
@@ -87,17 +87,17 @@ namespace GasCosts
 	/// Corresponds to SSTORE_RESET_GAS from EIP-2929
 	static unsigned const sstoreResetGas = 5000 - coldSloadCost;
 	/// Corresponds to SSTORE_CLEARS_SCHEDULE from EIP-2200
-	inline static unsigned sstoreClearsSchedule(langutil::EVMVersion _evmVersion)
+	inline static unsigned sstoreClearsSchedule(langutil::VMMachineAndVersion _evmVersion)
 	{
 		// Changes from EIP-3529
-		if (_evmVersion >= langutil::EVMVersion::london())
+		if (_evmVersion >= langutil::VMMachineAndVersion::london())
 			return sstoreResetGas + accessListStorageKeyCost;
 		else
 			return 15000;
 	}
-	inline static unsigned totalSstoreSetGas(langutil::EVMVersion _evmVersion)
+	inline static unsigned totalSstoreSetGas(langutil::VMMachineAndVersion _evmVersion)
 	{
-		if (_evmVersion >= langutil::EVMVersion::berlin())
+		if (_evmVersion >= langutil::VMMachineAndVersion::berlin())
 			return sstoreSetGas + coldSloadCost;
 		else
 			return sstoreSetGas;
@@ -105,29 +105,29 @@ namespace GasCosts
 	/// Corresponds to SSTORE_RESET_GAS from EIP-2929
 	/// For Berlin, the maximum is SSTORE_RESET_GAS + COLD_SLOAD_COST = 5000
 	/// For previous versions, it's a fixed 5000
-	inline unsigned totalSstoreResetGas(langutil::EVMVersion _evmVersion)
+	inline unsigned totalSstoreResetGas(langutil::VMMachineAndVersion _evmVersion)
 	{
-		if (_evmVersion >= langutil::EVMVersion::berlin())
+		if (_evmVersion >= langutil::VMMachineAndVersion::berlin())
 			return sstoreResetGas + coldSloadCost;
 		else
 			return 5000;
 	}
-	inline unsigned extCodeGas(langutil::EVMVersion _evmVersion)
+	inline unsigned extCodeGas(langutil::VMMachineAndVersion _evmVersion)
 	{
-		if (_evmVersion >= langutil::EVMVersion::berlin())
+		if (_evmVersion >= langutil::VMMachineAndVersion::berlin())
 			return coldAccountAccessCost;
-		else if (_evmVersion >= langutil::EVMVersion::tangerineWhistle())
+		else if (_evmVersion >= langutil::VMMachineAndVersion::tangerineWhistle())
 			return 700;
 		else
 			return 20;
 	}
-	inline unsigned balanceGas(langutil::EVMVersion _evmVersion)
+	inline unsigned balanceGas(langutil::VMMachineAndVersion _evmVersion)
 	{
-		if (_evmVersion >= langutil::EVMVersion::berlin())
+		if (_evmVersion >= langutil::VMMachineAndVersion::berlin())
 			return coldAccountAccessCost;
-		else if (_evmVersion >= langutil::EVMVersion::istanbul())
+		else if (_evmVersion >= langutil::VMMachineAndVersion::istanbul())
 			return 700;
-		else if (_evmVersion >= langutil::EVMVersion::tangerineWhistle())
+		else if (_evmVersion >= langutil::VMMachineAndVersion::tangerineWhistle())
 			return 400;
 		else
 			return 20;
@@ -137,11 +137,11 @@ namespace GasCosts
 	static unsigned const logDataGas = 8;                     // GAS_LOG_DATA
 	static unsigned const logTopicGas = 375;                  // GAS_LOG_TOPIC
 	static unsigned const createGas = 32000;                  // GAS_CREATE
-	inline unsigned callGas(langutil::EVMVersion _evmVersion)
+	inline unsigned callGas(langutil::VMMachineAndVersion _evmVersion)
 	{
-		if (_evmVersion >= langutil::EVMVersion::berlin())
+		if (_evmVersion >= langutil::VMMachineAndVersion::berlin())
 			return coldAccountAccessCost;
-		else if (_evmVersion >= langutil::EVMVersion::tangerineWhistle())
+		else if (_evmVersion >= langutil::VMMachineAndVersion::tangerineWhistle())
 			return 700;
 		else
 			return 40;
@@ -149,19 +149,19 @@ namespace GasCosts
 	static unsigned const callStipend = 2300;                  // GAS_CALL_STIPEND
 	static unsigned const callValueTransferGas = 9000;         // GAS_CALL_VALUE
 	static unsigned const callNewAccountGas = 25000;           // GAS_NEW_ACCOUNT / GAS_SELF_DESTRUCT_NEW_ACCOUNT
-	inline unsigned selfdestructGas(langutil::EVMVersion _evmVersion) // GAS_SELF_DESTRUCT
+	inline unsigned selfdestructGas(langutil::VMMachineAndVersion _evmVersion) // GAS_SELF_DESTRUCT
 	{
-		if (_evmVersion >= langutil::EVMVersion::berlin())
+		if (_evmVersion >= langutil::VMMachineAndVersion::berlin())
 			return coldAccountAccessCost;
-		else if (_evmVersion >= langutil::EVMVersion::tangerineWhistle())
+		else if (_evmVersion >= langutil::VMMachineAndVersion::tangerineWhistle())
 			return 5000;
 		else
 			return 0;
 	}
-	inline unsigned selfdestructRefundGas(langutil::EVMVersion _evmVersion)
+	inline unsigned selfdestructRefundGas(langutil::VMMachineAndVersion _evmVersion)
 	{
 		// Changes from EIP-3529
-		if (_evmVersion >= langutil::EVMVersion::london())
+		if (_evmVersion >= langutil::VMMachineAndVersion::london())
 			return 0;
 		else
 			return 24000;
@@ -172,9 +172,9 @@ namespace GasCosts
 	static unsigned const txGas = 21000;
 	static unsigned const txCreateGas = 53000;
 	static unsigned const txDataZeroGas = 4;
-	inline unsigned txDataNonZeroGas(langutil::EVMVersion _evmVersion)
+	inline unsigned txDataNonZeroGas(langutil::VMMachineAndVersion _evmVersion)
 	{
-		return _evmVersion >= langutil::EVMVersion::istanbul() ? 16 : 68;
+		return _evmVersion >= langutil::VMMachineAndVersion::istanbul() ? 16 : 68;
 	}
 	static unsigned const copyGas = 3;
 }
@@ -211,7 +211,7 @@ public:
 	};
 
 	/// Constructs a new gas meter given the current state.
-	GasMeter(std::shared_ptr<KnownState>  _state, langutil::EVMVersion _evmVersion, u256  _largestMemoryAccess = 0):
+	GasMeter(std::shared_ptr<KnownState>  _state, langutil::VMMachineAndVersion _evmVersion, u256  _largestMemoryAccess = 0):
 		m_state(std::move(_state)), m_evmVersion(_evmVersion), m_largestMemoryAccess(std::move(_largestMemoryAccess)) {}
 
 	/// @returns an upper bound on the gas consumed by the given instruction and updates
@@ -223,20 +223,20 @@ public:
 
 	/// @returns gas costs for simple instructions with constant gas costs (that do not
 	/// change with EVM versions)
-	static unsigned runGas(Instruction _instruction, langutil::EVMVersion _evmVersion);
+	static unsigned runGas(Instruction _instruction, langutil::VMMachineAndVersion _evmVersion);
 
 	/// @returns gas costs for push instructions (may change depending on EVM version)
-	static unsigned pushGas(u256 _value, langutil::EVMVersion _evmVersion);
+	static unsigned pushGas(u256 _value, langutil::VMMachineAndVersion _evmVersion);
 
 	/// @returns the gas cost of the supplied data, depending whether it is in creation code, or not.
 	/// In case of @a _inCreation, the data is only sent as a transaction and is not stored, whereas
 	/// otherwise code will be stored and have to pay "createDataGas" cost.
-	static u256 dataGas(bytes const& _data, bool _inCreation, langutil::EVMVersion _evmVersion);
+	static u256 dataGas(bytes const& _data, bool _inCreation, langutil::VMMachineAndVersion _evmVersion);
 
 	/// @returns the gas cost of non-zero data of the supplied length, depending whether it is in creation code, or not.
 	/// In case of @a _inCreation, the data is only sent as a transaction and is not stored, whereas
 	/// otherwise code will be stored and have to pay "createDataGas" cost.
-	static u256 dataGas(uint64_t _length, bool _inCreation, langutil::EVMVersion _evmVersion);
+	static u256 dataGas(uint64_t _length, bool _inCreation, langutil::VMMachineAndVersion _evmVersion);
 
 private:
 	/// @returns _multiplier * (_value + 31) / 32, if _value is a known constant and infinite otherwise.
@@ -249,7 +249,7 @@ private:
 	GasConsumption memoryGas(int _stackPosOffset, int _stackPosSize);
 
 	std::shared_ptr<KnownState> m_state;
-	langutil::EVMVersion m_evmVersion;
+	langutil::VMMachineAndVersion m_evmVersion;
 	/// Largest point where memory was accessed since the creation of this object.
 	u256 m_largestMemoryAccess;
 };

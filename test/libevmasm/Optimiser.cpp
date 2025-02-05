@@ -1103,7 +1103,7 @@ BOOST_AUTO_TEST_CASE(peephole_double_push)
 	};
 
 	// `PUSH0 PUSH0` is cheaper than `DUP1 PUSH0`
-	if (solidity::test::CommonOptions::get().evmVersion() >= EVMVersion::shanghai())
+	if (solidity::test::CommonOptions::get().evmVersion() >= VMMachineAndVersion::shanghai())
 		expectation = {
 			u256(0),
 			u256(0),

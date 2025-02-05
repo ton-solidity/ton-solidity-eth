@@ -8,7 +8,7 @@
     mcopy(0x58, 0x40, 0x20)
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // Trace:
 //   MCOPY(8, 32, 32)

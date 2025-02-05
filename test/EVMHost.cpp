@@ -85,7 +85,7 @@ bool EVMHost::checkVmPaths(std::vector<boost::filesystem::path> const& _vmPaths)
 	return evmVmFound;
 }
 
-EVMHost::EVMHost(langutil::EVMVersion _evmVersion, evmc::VM& _vm):
+EVMHost::EVMHost(langutil::VMMachineAndVersion _evmVersion, evmc::VM& _vm):
 	m_vm(_vm),
 	m_evmVersion(_evmVersion)
 {
@@ -95,31 +95,31 @@ EVMHost::EVMHost(langutil::EVMVersion _evmVersion, evmc::VM& _vm):
 		assertThrow(false, Exception, "");
 	}
 
-	if (_evmVersion == langutil::EVMVersion::homestead())
+	if (_evmVersion == langutil::VMMachineAndVersion::homestead())
 		m_evmRevision = EVMC_HOMESTEAD;
-	else if (_evmVersion == langutil::EVMVersion::tangerineWhistle())
+	else if (_evmVersion == langutil::VMMachineAndVersion::tangerineWhistle())
 		m_evmRevision = EVMC_TANGERINE_WHISTLE;
-	else if (_evmVersion == langutil::EVMVersion::spuriousDragon())
+	else if (_evmVersion == langutil::VMMachineAndVersion::spuriousDragon())
 		m_evmRevision = EVMC_SPURIOUS_DRAGON;
-	else if (_evmVersion == langutil::EVMVersion::byzantium())
+	else if (_evmVersion == langutil::VMMachineAndVersion::byzantium())
 		m_evmRevision = EVMC_BYZANTIUM;
-	else if (_evmVersion == langutil::EVMVersion::constantinople())
+	else if (_evmVersion == langutil::VMMachineAndVersion::constantinople())
 		m_evmRevision = EVMC_CONSTANTINOPLE;
-	else if (_evmVersion == langutil::EVMVersion::petersburg())
+	else if (_evmVersion == langutil::VMMachineAndVersion::petersburg())
 		m_evmRevision = EVMC_PETERSBURG;
-	else if (_evmVersion == langutil::EVMVersion::istanbul())
+	else if (_evmVersion == langutil::VMMachineAndVersion::istanbul())
 		m_evmRevision = EVMC_ISTANBUL;
-	else if (_evmVersion == langutil::EVMVersion::berlin())
+	else if (_evmVersion == langutil::VMMachineAndVersion::berlin())
 		m_evmRevision = EVMC_BERLIN;
-	else if (_evmVersion == langutil::EVMVersion::london())
+	else if (_evmVersion == langutil::VMMachineAndVersion::london())
 		m_evmRevision = EVMC_LONDON;
-	else if (_evmVersion == langutil::EVMVersion::paris())
+	else if (_evmVersion == langutil::VMMachineAndVersion::paris())
 		m_evmRevision = EVMC_PARIS;
-	else if (_evmVersion == langutil::EVMVersion::shanghai())
+	else if (_evmVersion == langutil::VMMachineAndVersion::shanghai())
 		m_evmRevision = EVMC_SHANGHAI;
-	else if (_evmVersion == langutil::EVMVersion::cancun())
+	else if (_evmVersion == langutil::VMMachineAndVersion::cancun())
 		m_evmRevision = EVMC_CANCUN;
-	else if (_evmVersion == langutil::EVMVersion::prague())
+	else if (_evmVersion == langutil::VMMachineAndVersion::prague())
 		m_evmRevision = EVMC_PRAGUE;
 	else
 		assertThrow(false, Exception, "Unsupported EVM version");
@@ -178,7 +178,7 @@ void EVMHost::reset()
 		// 1wei
 		accounts[address].balance = evmc::uint256be{1};
 		// Set according to EIP-1052.
-		if (precompiledAddress < 5 || m_evmVersion >= langutil::EVMVersion::byzantium())
+		if (precompiledAddress < 5 || m_evmVersion >= langutil::VMMachineAndVersion::byzantium())
 			accounts[address].codehash = 0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470_bytes32;
 	}
 }
@@ -201,7 +201,7 @@ void EVMHost::newTransactionFrame()
 	}
 	// Process selfdestruct list
 	for (auto& [address, _]: recorded_selfdestructs)
-		if (m_evmVersion < langutil::EVMVersion::cancun() || m_newlyCreatedAccounts.count(address))
+		if (m_evmVersion < langutil::VMMachineAndVersion::cancun() || m_newlyCreatedAccounts.count(address))
 			// EIP-6780: If SELFDESTRUCT is executed in a transaction different from the one
 			// in which it was created, we do NOT record it or clear any data.
 			// Otherwise, the previous behavior (pre-Cancun) is maintained.
@@ -249,30 +249,30 @@ evmc::Result EVMHost::call(evmc_message const& _message) noexcept
 		return precompileRipeMD160(_message);
 	else if (_message.recipient == 0x0000000000000000000000000000000000000004_address)
 		return precompileIdentity(_message);
-	else if (_message.recipient == 0x0000000000000000000000000000000000000005_address && m_evmVersion >= langutil::EVMVersion::byzantium())
+	else if (_message.recipient == 0x0000000000000000000000000000000000000005_address && m_evmVersion >= langutil::VMMachineAndVersion::byzantium())
 		return precompileModExp(_message);
-	else if (_message.recipient == 0x0000000000000000000000000000000000000006_address && m_evmVersion >= langutil::EVMVersion::byzantium())
+	else if (_message.recipient == 0x0000000000000000000000000000000000000006_address && m_evmVersion >= langutil::VMMachineAndVersion::byzantium())
 	{
-		if (m_evmVersion <= langutil::EVMVersion::istanbul())
+		if (m_evmVersion <= langutil::VMMachineAndVersion::istanbul())
 			return precompileALTBN128G1Add<EVMC_ISTANBUL>(_message);
 		else
 			return precompileALTBN128G1Add<EVMC_LONDON>(_message);
 	}
-	else if (_message.recipient == 0x0000000000000000000000000000000000000007_address && m_evmVersion >= langutil::EVMVersion::byzantium())
+	else if (_message.recipient == 0x0000000000000000000000000000000000000007_address && m_evmVersion >= langutil::VMMachineAndVersion::byzantium())
 	{
-		if (m_evmVersion <= langutil::EVMVersion::istanbul())
+		if (m_evmVersion <= langutil::VMMachineAndVersion::istanbul())
 			return precompileALTBN128G1Mul<EVMC_ISTANBUL>(_message);
 		else
 			return precompileALTBN128G1Mul<EVMC_LONDON>(_message);
 	}
-	else if (_message.recipient == 0x0000000000000000000000000000000000000008_address && m_evmVersion >= langutil::EVMVersion::byzantium())
+	else if (_message.recipient == 0x0000000000000000000000000000000000000008_address && m_evmVersion >= langutil::VMMachineAndVersion::byzantium())
 	{
-		if (m_evmVersion <= langutil::EVMVersion::istanbul())
+		if (m_evmVersion <= langutil::VMMachineAndVersion::istanbul())
 			return precompileALTBN128PairingProduct<EVMC_ISTANBUL>(_message);
 		else
 			return precompileALTBN128PairingProduct<EVMC_LONDON>(_message);
 	}
-	else if (_message.recipient == 0x0000000000000000000000000000000000000009_address && m_evmVersion >= langutil::EVMVersion::istanbul())
+	else if (_message.recipient == 0x0000000000000000000000000000000000000009_address && m_evmVersion >= langutil::VMMachineAndVersion::istanbul())
 		return precompileBlake2f(_message);
 
 	auto const stateBackup = accounts;

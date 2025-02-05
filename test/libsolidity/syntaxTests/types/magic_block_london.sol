@@ -9,5 +9,5 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=london
+// VMMachineAndVersion: >=london
 // ----

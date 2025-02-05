@@ -18,7 +18,7 @@ contract test {
     }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ABIEncoderV1Only: true
 // compileViaYul: false
 // ----

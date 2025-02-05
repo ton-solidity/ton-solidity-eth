@@ -6,7 +6,7 @@
   }
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // step: constantOptimiser
 //

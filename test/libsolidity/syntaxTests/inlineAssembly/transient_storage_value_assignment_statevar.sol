@@ -8,7 +8,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // TypeError 4713: (92-98): State variables cannot be assigned to - you have to use "sstore()" or "tstore()".
 // TypeError 4713: (116-124): State variables cannot be assigned to - you have to use "sstore()" or "tstore()".

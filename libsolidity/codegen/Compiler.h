@@ -26,7 +26,7 @@
 #include <libsolidity/codegen/CompilerContext.h>
 #include <libsolidity/interface/OptimiserSettings.h>
 #include <libsolidity/interface/DebugSettings.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 #include <libevmasm/Assembly.h>
 #include <functional>
 #include <ostream>
@@ -37,7 +37,7 @@ namespace solidity::frontend
 class Compiler
 {
 public:
-	Compiler(langutil::EVMVersion _evmVersion, RevertStrings _revertStrings, OptimiserSettings _optimiserSettings):
+	Compiler(langutil::VMMachineAndVersion _evmVersion, RevertStrings _revertStrings, OptimiserSettings _optimiserSettings):
 		m_optimiserSettings(std::move(_optimiserSettings)),
 		m_runtimeContext(_evmVersion, _revertStrings),
 		m_context(_evmVersion, _revertStrings, &m_runtimeContext)

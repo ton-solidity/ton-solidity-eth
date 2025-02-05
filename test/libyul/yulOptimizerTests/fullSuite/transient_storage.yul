@@ -7,7 +7,7 @@
     pop(tload(0x20))
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // step: fullSuite
 //

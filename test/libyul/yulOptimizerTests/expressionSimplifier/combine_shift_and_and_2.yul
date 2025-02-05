@@ -19,7 +19,7 @@
     sstore(16, g)
 }
 // ====
-// EVMVersion: >byzantium
+// VMMachineAndVersion: >byzantium
 // ----
 // step: expressionSimplifier
 //

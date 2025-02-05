@@ -28,7 +28,7 @@
 #include <libyul/YulStack.h>
 
 #include <liblangutil/DebugInfoSelection.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 #include <libsolutil/JSON.h>
 
@@ -188,7 +188,7 @@ struct CommandLineOptions
 	{
 		boost::filesystem::path dir;
 		bool overwriteFiles = false;
-		langutil::EVMVersion evmVersion;
+		langutil::VMMachineAndVersion evmVersion;
 		bool viaIR = false;
 		RevertStrings revertStrings = RevertStrings::Default;
 		std::optional<langutil::DebugInfoSelection> debugInfoSelection;

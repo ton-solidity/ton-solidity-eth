@@ -16,7 +16,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // f(bool): false ->
 // f(bool): true -> FAILURE

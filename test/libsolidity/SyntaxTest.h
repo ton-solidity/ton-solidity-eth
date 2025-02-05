@@ -43,7 +43,7 @@ public:
 	}
 	SyntaxTest(
 		std::string const& _filename,
-		langutil::EVMVersion _evmVersion,
+		langutil::VMMachineAndVersion _evmVersion,
 		langutil::Error::Severity _minSeverity = langutil::Error::Severity::Info
 	);
 

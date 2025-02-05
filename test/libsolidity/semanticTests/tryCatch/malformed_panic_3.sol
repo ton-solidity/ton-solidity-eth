@@ -50,7 +50,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // a() -> FAILURE, hex"4e487b"
 // b() -> FAILURE, hex"4e487b710000"

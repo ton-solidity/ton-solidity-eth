@@ -8,7 +8,7 @@ contract C {
 
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // TransientDataLocation: transient
 // TransientVarName: x

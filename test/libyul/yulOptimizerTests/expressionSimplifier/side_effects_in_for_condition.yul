@@ -4,7 +4,7 @@
   }
 }
 // ====
-// EVMVersion: >byzantium
+// VMMachineAndVersion: >byzantium
 // ----
 // step: expressionSimplifier
 //

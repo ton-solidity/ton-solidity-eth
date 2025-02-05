@@ -28,7 +28,7 @@
 
 #include <libsolidity/interface/DebugSettings.h>
 
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 #include <functional>
 #include <map>
@@ -55,7 +55,7 @@ class ABIFunctions
 {
 public:
 	explicit ABIFunctions(
-		langutil::EVMVersion _evmVersion,
+		langutil::VMMachineAndVersion _evmVersion,
 		RevertStrings _revertStrings,
 		MultiUseYulFunctionCollector& _functionCollector
 	):
@@ -277,7 +277,7 @@ private:
 	/// if m_revertStrings is debug.
 	std::string revertReasonIfDebugFunction(std::string const& _message = "");
 
-	langutil::EVMVersion m_evmVersion;
+	langutil::VMMachineAndVersion m_evmVersion;
 	RevertStrings const m_revertStrings;
 	MultiUseYulFunctionCollector& m_functionCollector;
 	YulUtilFunctions m_utils;

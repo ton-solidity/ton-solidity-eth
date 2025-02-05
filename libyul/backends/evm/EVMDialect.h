@@ -21,11 +21,11 @@
 
 #pragma once
 
-#include <libyul/Dialect.h> 
+#include <libyul/Dialect.h>
 
 #include <libyul/backends/evm/AbstractAssembly.h>
 #include <libyul/ASTForward.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 #include <map>
 #include <set>
@@ -65,7 +65,7 @@ struct BuiltinFunctionForVM: public BuiltinFunction
 struct VMAssemblerLanguage: public Dialect
 {
 	/// Constructor, should only be used internally. Use the factory functions below.
-	VMAssemblerLanguage(langutil::EVMVersion _evmVersion, std::optional<uint8_t> _eofVersion, bool _objectAccess);
+	VMAssemblerLanguage(langutil::VMMachineAndVersion _evmVersion, std::optional<uint8_t> _eofVersion, bool _objectAccess);
 
 	/// @returns the builtin function of the given name or a nullptr if it is not a builtin function.
 	BuiltinFunctionForVM const* builtin(YulName _name) const override;
@@ -82,10 +82,10 @@ struct VMAssemblerLanguage: public Dialect
 	BuiltinFunctionForVM const* storageLoadFunction() const override { return builtin("sload"_yulname); }
 	YulName hashFunction() const override { return "keccak256"_yulname; }
 
-	static VMAssemblerLanguage const& strictAssemblyForEVM(langutil::EVMVersion _evmVersion, std::optional<uint8_t> _eofVersion);
-	static VMAssemblerLanguage const& strictAssemblyForEVMObjects(langutil::EVMVersion _evmVersion, std::optional<uint8_t> _eofVersion);
+	static VMAssemblerLanguage const& strictAssemblyForEVM(langutil::VMMachineAndVersion _evmVersion, std::optional<uint8_t> _eofVersion);
+	static VMAssemblerLanguage const& strictAssemblyForEVMObjects(langutil::VMMachineAndVersion _evmVersion, std::optional<uint8_t> _eofVersion);
 
-	langutil::EVMVersion evmVersion() const { return m_evmVersion; }
+	langutil::VMMachineAndVersion evmVersion() const { return m_evmVersion; }
 	std::optional<uint8_t> eofVersion() const { return m_eofVersion; }
 
 	bool providesObjectAccess() const { return m_objectAccess; }
@@ -96,7 +96,7 @@ protected:
 	BuiltinFunctionForVM const* verbatimFunction(size_t _arguments, size_t _returnVariables) const;
 
 	bool const m_objectAccess;
-	langutil::EVMVersion const m_evmVersion;
+	langutil::VMMachineAndVersion const m_evmVersion;
 	std::optional<uint8_t> m_eofVersion;
 	std::map<YulName, BuiltinFunctionForVM> m_functions;
 	std::map<std::pair<size_t, size_t>, std::shared_ptr<BuiltinFunctionForVM const>> mutable m_verbatimFunctions;

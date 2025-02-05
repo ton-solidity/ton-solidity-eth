@@ -6,6 +6,6 @@ contract C
     }
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // Warning 2319: (67-80): This declaration shadows a builtin symbol.

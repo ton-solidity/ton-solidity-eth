@@ -6,7 +6,7 @@
     }
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // step: loopInvariantCodeMotion
 //

@@ -25,7 +25,7 @@
 #include <libevmasm/Exceptions.h>
 #include <libsolutil/Common.h>
 #include <libsolutil/Assertions.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 namespace solidity::evmasm
 {
@@ -317,7 +317,7 @@ struct InstructionInfo
 };
 
 /// Information on all the instructions.
-InstructionInfo instructionInfo(Instruction _inst, langutil::EVMVersion _evmVersion);
+InstructionInfo instructionInfo(Instruction _inst, langutil::VMMachineAndVersion _evmVersion);
 
 /// check whether instructions exists.
 bool isValidInstruction(Instruction _inst);

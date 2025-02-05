@@ -19,7 +19,7 @@
     }
 }
 // ====
-// EVMVersion: =homestead
+// VMMachineAndVersion: =homestead
 // ----
 // step: stackCompressor
 //

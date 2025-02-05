@@ -39,18 +39,18 @@ using namespace solidity::frontend;
 using namespace solidity::langutil;
 using namespace solidity::util;
 
-static std::vector<EVMVersion> s_evmVersions = {
-	EVMVersion::homestead(),
-	EVMVersion::tangerineWhistle(),
-	EVMVersion::spuriousDragon(),
-	EVMVersion::byzantium(),
-	EVMVersion::constantinople(),
-	EVMVersion::petersburg(),
-	EVMVersion::istanbul(),
-	EVMVersion::berlin(),
-	EVMVersion::london(),
-	EVMVersion::paris(),
-	EVMVersion::prague()
+static std::vector<VMMachineAndVersion> s_evmVersions = {
+	VMMachineAndVersion::homestead(),
+	VMMachineAndVersion::tangerineWhistle(),
+	VMMachineAndVersion::spuriousDragon(),
+	VMMachineAndVersion::byzantium(),
+	VMMachineAndVersion::constantinople(),
+	VMMachineAndVersion::petersburg(),
+	VMMachineAndVersion::istanbul(),
+	VMMachineAndVersion::berlin(),
+	VMMachineAndVersion::london(),
+	VMMachineAndVersion::paris(),
+	VMMachineAndVersion::prague()
 };
 
 void FuzzerUtil::testCompilerJsonInterface(std::string const& _input, bool _optimize, bool _quiet)
@@ -95,7 +95,7 @@ void FuzzerUtil::testCompiler(
 )
 {
 	frontend::CompilerStack compiler;
-	EVMVersion evmVersion = s_evmVersions[_rand % s_evmVersions.size()];
+	VMMachineAndVersion evmVersion = s_evmVersions[_rand % s_evmVersions.size()];
 	frontend::OptimiserSettings optimiserSettings;
 	if (_optimize)
 		optimiserSettings = frontend::OptimiserSettings::standard();
@@ -190,7 +190,7 @@ void FuzzerUtil::testConstantOptimizer(std::string const& _input, bool _quiet)
 
 	for (bool isCreation: {false, true})
 	{
-		Assembly assembly{langutil::EVMVersion{}, isCreation, std::nullopt, {}};
+		Assembly assembly{langutil::VMMachineAndVersion{}, isCreation, std::nullopt, {}};
 		for (u256 const& n: numbers)
 		{
 			if (!_quiet)
@@ -204,7 +204,7 @@ void FuzzerUtil::testConstantOptimizer(std::string const& _input, bool _quiet)
 			ConstantOptimisationMethod::optimiseConstants(
 				isCreation,
 				runs,
-				langutil::EVMVersion{},
+				langutil::VMMachineAndVersion{},
 				tmp
 			);
 		}

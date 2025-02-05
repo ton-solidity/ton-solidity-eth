@@ -21,7 +21,7 @@ contract test {
     ActionChoices choice;
 }
 // ====
-// EVMVersion: <byzantium
+// VMMachineAndVersion: <byzantium
 // ----
 // getChoiceExp(uint256): 3 -> FAILURE # These should throw #
 // getChoiceFromSigned(int256): -1 -> FAILURE

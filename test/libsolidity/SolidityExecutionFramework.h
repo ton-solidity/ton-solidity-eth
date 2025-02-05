@@ -41,7 +41,7 @@ class SolidityExecutionFramework: public solidity::test::ExecutionFramework
 public:
 	SolidityExecutionFramework(): m_showMetadata(solidity::test::CommonOptions::get().showMetadata) {}
 	explicit SolidityExecutionFramework(
-		langutil::EVMVersion _evmVersion,
+		langutil::VMMachineAndVersion _evmVersion,
 		std::optional<uint8_t> _eofVersion,
 		std::vector<boost::filesystem::path> const& _vmPaths,
 		bool _appendCBORMetadata = true

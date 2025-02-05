@@ -19,7 +19,7 @@ contract test {
     }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // library: L
 // get(uint8): 0 -> 0

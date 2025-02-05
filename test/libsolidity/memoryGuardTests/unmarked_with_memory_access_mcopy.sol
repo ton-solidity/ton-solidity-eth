@@ -12,7 +12,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // :C(creation) false
 // :C(runtime) false

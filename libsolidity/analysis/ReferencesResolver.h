@@ -25,7 +25,7 @@
 
 #include <libsolidity/ast/ASTVisitor.h>
 #include <libsolidity/ast/ASTAnnotations.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 #include <libyul/optimiser/ASTWalker.h>
 
 #include <list>
@@ -52,7 +52,7 @@ public:
 	ReferencesResolver(
 		langutil::ErrorReporter& _errorReporter,
 		NameAndTypeResolver& _resolver,
-		langutil::EVMVersion _evmVersion,
+		langutil::VMMachineAndVersion _evmVersion,
 		bool _resolveInsideCode = false
 	):
 		m_errorReporter(_errorReporter),
@@ -98,7 +98,7 @@ private:
 
 	langutil::ErrorReporter& m_errorReporter;
 	NameAndTypeResolver& m_resolver;
-	langutil::EVMVersion m_evmVersion;
+	langutil::VMMachineAndVersion m_evmVersion;
 	/// Stack of function definitions.
 	std::vector<FunctionDefinition const*> m_functionDefinitions;
 	bool const m_resolveInsideCode;

@@ -12,6 +12,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=tangerineWhistle
+// VMMachineAndVersion: >=tangerineWhistle
 // ----
 // f() -> true

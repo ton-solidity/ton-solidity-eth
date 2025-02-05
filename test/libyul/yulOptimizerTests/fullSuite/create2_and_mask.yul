@@ -7,7 +7,7 @@
     sstore(a, b)
 }
 // ====
-// EVMVersion: >=shanghai
+// VMMachineAndVersion: >=shanghai
 // ----
 // step: fullSuite
 //

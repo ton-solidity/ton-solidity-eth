@@ -19,7 +19,7 @@
 #include <libyul/AsmAnalysis.h>
 #include <libyul/AsmAnalysisInfo.h>
 
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 #include <liblangutil/Exceptions.h>
 
 #include <test/libyul/Common.h>
@@ -71,7 +71,7 @@ void SyntaxTest::parseAndAnalyze()
 
 }
 
-SyntaxTest::SyntaxTest(std::string const& _filename, langutil::EVMVersion _evmVersion):
+SyntaxTest::SyntaxTest(std::string const& _filename, langutil::VMMachineAndVersion _evmVersion):
 	CommonSyntaxTest(_filename, _evmVersion)
 {
 	std::string dialectName = m_reader.stringSetting("dialect", "evm");

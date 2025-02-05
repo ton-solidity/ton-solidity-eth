@@ -32,7 +32,7 @@
 #include <libyul/Exceptions.h>
 
 #include <liblangutil/DebugInfoSelection.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 #include <liblangutil/SourceReferenceFormatter.h>
 
 #include <test/tools/ossfuzz/yulFuzzerCommon.h>
@@ -48,7 +48,7 @@ DEFINE_PROTO_FUZZER(Program const& _input)
 {
 	ProtoConverter converter;
 	std::string yul_source = converter.programToString(_input);
-	EVMVersion version = converter.version();
+	VMMachineAndVersion version = converter.version();
 
 	if (const char* dump_path = getenv("PROTO_FUZZER_DUMP_PATH"))
 	{

@@ -10,7 +10,7 @@
     mstore(_0, mem32)  // Redundant with previous MSTORE.
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // step: equalStoreEliminator
 //

@@ -70,7 +70,7 @@ int magicVariableToID(std::string const& _name)
 	solAssert(false, "Unknown magic variable: \"" + _name + "\".");
 }
 
-inline std::vector<std::shared_ptr<MagicVariableDeclaration const>> constructMagicVariables(langutil::EVMVersion _evmVersion)
+inline std::vector<std::shared_ptr<MagicVariableDeclaration const>> constructMagicVariables(langutil::VMMachineAndVersion _evmVersion)
 {
 	static auto const magicVarDecl = [](std::string const& _name, Type const* _type) {
 		return std::make_shared<MagicVariableDeclaration>(magicVariableToID(_name), _name, _type);
@@ -110,7 +110,7 @@ inline std::vector<std::shared_ptr<MagicVariableDeclaration const>> constructMag
 		)),
 	};
 
-	if (_evmVersion >= langutil::EVMVersion::cancun())
+	if (_evmVersion >= langutil::VMMachineAndVersion::cancun())
 		magicVariableDeclarations.push_back(
 			magicVarDecl("blobhash", TypeProvider::function(strings{"uint256"}, strings{"bytes32"}, FunctionType::Kind::BlobHash, StateMutability::View))
 		);
@@ -120,7 +120,7 @@ inline std::vector<std::shared_ptr<MagicVariableDeclaration const>> constructMag
 
 }
 
-GlobalContext::GlobalContext(langutil::EVMVersion _evmVersion):
+GlobalContext::GlobalContext(langutil::VMMachineAndVersion _evmVersion):
 	m_magicVariables{constructMagicVariables(_evmVersion)}
 {
 }

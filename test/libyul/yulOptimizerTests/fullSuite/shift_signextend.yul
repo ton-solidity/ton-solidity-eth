@@ -4,7 +4,7 @@
     sstore(0, a)
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // step: fullSuite
 //

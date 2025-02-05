@@ -3,7 +3,7 @@
   returndatacopy(0,0,s)
 }
 // ====
-// EVMVersion: >homestead
+// VMMachineAndVersion: >homestead
 // ----
 // step: unusedStoreEliminator
 //

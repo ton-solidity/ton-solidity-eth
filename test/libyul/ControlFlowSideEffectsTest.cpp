@@ -64,7 +64,7 @@ TestCase::TestResult ControlFlowSideEffectsTest::run(std::ostream& _stream, std:
 
 	// TODO: Add EOF support
 	ControlFlowSideEffectsCollector sideEffects(
-		EVMDialect::strictAssemblyForEVMObjects(langutil::EVMVersion(), std::nullopt),
+		EVMDialect::strictAssemblyForEVMObjects(langutil::VMMachineAndVersion(), std::nullopt),
 		obj.code()->root()
 	);
 	m_obtainedResult.clear();

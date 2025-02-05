@@ -7,7 +7,7 @@
     sstore(a, b)
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // step: expressionSimplifier
 //

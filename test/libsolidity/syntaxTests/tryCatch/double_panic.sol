@@ -7,7 +7,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // TypeError 1271: (72-109): Expected `catch Panic(uint ...) { ... }`.
 // TypeError 6732: (110-139): This try statement already has a "Panic" catch clause.

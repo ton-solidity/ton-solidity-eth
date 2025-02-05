@@ -28,7 +28,7 @@ using namespace solidity::frontend::test;
 using namespace solidity::test;
 
 SMTCheckerTest::SMTCheckerTest(std::string const& _filename):
-	SyntaxTest(_filename, EVMVersion{}),
+	SyntaxTest(_filename, VMMachineAndVersion{}),
 	universalCallback(nullptr, smtCommand)
 {
 	auto contract = m_reader.stringSetting("SMTContract", "");

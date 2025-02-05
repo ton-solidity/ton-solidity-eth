@@ -9,7 +9,7 @@
     mcopy(_0, _32, _32) // Redundant with MSTORE.
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // step: equalStoreEliminator
 //

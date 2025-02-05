@@ -7,6 +7,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // ParserError 5568: (98-104): Cannot use builtin function name "tstore" as identifier name.

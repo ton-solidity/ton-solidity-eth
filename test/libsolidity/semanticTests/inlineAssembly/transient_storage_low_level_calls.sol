@@ -62,7 +62,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // testDelegateCall() -> true
 // testCall() -> true

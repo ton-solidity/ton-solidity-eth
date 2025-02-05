@@ -7,6 +7,6 @@ contract test {
     }
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // TypeError 1408: (95-96): Only local variables are supported. To access state variables, use the ".slot" and ".offset" suffixes.

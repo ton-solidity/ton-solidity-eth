@@ -5,7 +5,7 @@
     mcopy()
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // TypeError 7000: (6-11): Function "mcopy" expects 3 arguments but got 4.
 // TypeError 7000: (44-49): Function "mcopy" expects 3 arguments but got 2.

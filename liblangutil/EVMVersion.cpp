@@ -20,7 +20,7 @@
  * Handles both the machine type and version capabilities for code generation.
  */
 
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 #include <libevmasm/Instruction.h>
 
 using namespace solidity;

@@ -32,7 +32,7 @@ contract D {
     }
 }
 // ====
-// EVMVersion: <byzantium
+// VMMachineAndVersion: <byzantium
 // ----
 // f() -> 0x1
 // fview() -> 1

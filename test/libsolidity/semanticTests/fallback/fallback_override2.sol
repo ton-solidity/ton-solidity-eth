@@ -12,6 +12,6 @@ contract B is A {
     }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // f() -> 1, 0x40, 0x00

@@ -26,7 +26,7 @@
 #include <test/evmc/evmc.hpp>
 #include <test/evmc/evmc.h>
 
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 #include <libsolutil/FixedHash.h>
 
@@ -77,7 +77,7 @@ public:
 	/// @returns true, if an evmc vm supporting evm1 was loaded properly,
 	static bool checkVmPaths(std::vector<boost::filesystem::path> const& _vmPaths);
 
-	explicit EVMHost(langutil::EVMVersion _evmVersion, evmc::VM& _vm);
+	explicit EVMHost(langutil::VMMachineAndVersion _evmVersion, evmc::VM& _vm);
 
 	/// Reset entire state (including accounts).
 	void reset();
@@ -133,7 +133,7 @@ private:
 
 	evmc::VM& m_vm;
 	/// EVM version requested by the testing tool
-	langutil::EVMVersion m_evmVersion;
+	langutil::VMMachineAndVersion m_evmVersion;
 	/// EVM version requested from EVMC (matches the above)
 	evmc_revision m_evmRevision;
 

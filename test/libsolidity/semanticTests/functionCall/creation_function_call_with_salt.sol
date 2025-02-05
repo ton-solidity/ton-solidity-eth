@@ -14,7 +14,7 @@ contract D {
     }
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // constructor(): 2 ->
 // gas irOptimized: 139112

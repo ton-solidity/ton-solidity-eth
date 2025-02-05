@@ -4,6 +4,6 @@ contract C {
     }
 }
 // ====
-// EVMVersion: <paris
+// VMMachineAndVersion: <paris
 // ----
 // Warning 9432: (77-93): "prevrandao" is not supported by the VM version and will be treated as "difficulty".

@@ -32,7 +32,7 @@
 #include <libsolidity/interface/OptimiserSettings.h>
 
 #include <liblangutil/CharStreamProvider.h>
-#include <liblangutil/EVMVersion.h>
+#include <liblangutil/VMMachineAndVersion.h>
 
 #include <string>
 
@@ -47,7 +47,7 @@ public:
 	using ExecutionContext = IRGenerationContext::ExecutionContext;
 
 	IRGenerator(
-		langutil::EVMVersion _evmVersion,
+		langutil::VMMachineAndVersion _evmVersion,
 		std::optional<uint8_t> _eofVersion,
 		RevertStrings _revertStrings,
 		std::map<std::string, unsigned> _sourceIndices,
@@ -139,7 +139,7 @@ private:
 
 	std::string dispenseLocationComment(ASTNode const& _node);
 
-	langutil::EVMVersion const m_evmVersion;
+	langutil::VMMachineAndVersion const m_evmVersion;
 	std::optional<uint8_t> const m_eofVersion;
 
 	IRGenerationContext m_context;

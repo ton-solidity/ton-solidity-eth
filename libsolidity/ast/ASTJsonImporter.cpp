@@ -716,7 +716,7 @@ ASTPointer<ArrayTypeName> ASTJsonImporter::createArrayTypeName(Json const&  _nod
 ASTPointer<InlineAssembly> ASTJsonImporter::createInlineAssembly(Json const& _node)
 {
 	astAssert(_node["evmVersion"].is_string(), "Expected evmVersion to be a string!");
-	auto evmVersion = langutil::EVMVersion::fromString(_node["evmVersion"].get<std::string>());
+	auto evmVersion = langutil::VMMachineAndVersion::fromString(_node["evmVersion"].get<std::string>());
 	astAssert(evmVersion.has_value(), "Invalid EVM version!");
 	astAssert(m_evmVersion == evmVersion, "Imported tree evm version differs from configured evm version!");
 

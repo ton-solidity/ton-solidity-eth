@@ -6,7 +6,7 @@ contract c {
     bytes data;
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // (): 1, 2, 3, 4, 5 ->
 // gas irOptimized: 155122

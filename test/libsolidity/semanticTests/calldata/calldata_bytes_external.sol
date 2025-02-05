@@ -7,6 +7,6 @@ contract CalldataTest {
     }
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // tester(bytes): 0x20, 0x08, "abcdefgh" -> "c"

@@ -143,7 +143,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=cancun
+// VMMachineAndVersion: >=cancun
 // ----
 // AdditionLoopExpression: false
 // ShortHandAdditionLoopExpression: false

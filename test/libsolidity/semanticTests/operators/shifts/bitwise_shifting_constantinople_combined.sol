@@ -84,7 +84,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // shl_zero(uint256): 0x00 -> 0x00
 // shl_zero(uint256): 0xffff -> 0xffff

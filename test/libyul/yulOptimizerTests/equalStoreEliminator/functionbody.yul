@@ -27,7 +27,7 @@
 
 }
 // ====
-// EVMVersion: >=byzantium
+// VMMachineAndVersion: >=byzantium
 // ----
 // step: equalStoreEliminator
 //

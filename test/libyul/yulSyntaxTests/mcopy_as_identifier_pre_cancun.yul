@@ -9,4 +9,4 @@
     }
 }
 // ====
-// EVMVersion: <cancun
+// VMMachineAndVersion: <cancun

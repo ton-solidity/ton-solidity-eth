@@ -11,7 +11,7 @@ function run(a: T, b: U(T), c: U(U(T))) {
     f(b, b, c);
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // compileViaYul: true
 // ----
 // Warning 2264: (0-29): Experimental features are turned on. Do not use experimental features on live deployments.

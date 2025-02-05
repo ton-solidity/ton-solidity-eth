@@ -20,7 +20,7 @@ contract C {
     }
 }
 // ====
-// EVMVersion: >=constantinople
+// VMMachineAndVersion: >=constantinople
 // ----
 // test() -> 42
 // gas legacy: 76034

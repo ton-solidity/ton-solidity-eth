@@ -6,7 +6,7 @@ contract Test {
     }
 }
 // ====
-// EVMVersion: >=homestead
+// VMMachineAndVersion: >=homestead
 // ----
 // library: Lib
 // f() ->
