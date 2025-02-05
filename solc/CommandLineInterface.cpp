@@ -1219,7 +1219,7 @@ std::string CommandLineInterface::objectWithLinkRefsHex(evmasm::LinkerObject con
 	return out;
 }
 
-void CommandLineInterface::assembleYul(yul::YulStack::Language _language, yul::YulStack::Machine _targetMachine)
+void CommandLineInterface::assembleYul(yul::YulStack::Language _language) 
 {
 	solAssert(m_options.input.mode == InputMode::Assembler);
 
@@ -1276,8 +1276,7 @@ void CommandLineInterface::assembleYul(yul::YulStack::Language _language, yul::Y
 
 	for (auto const& src: m_fileReader.sourceUnits())
 	{
-		solAssert(_targetMachine == yul::YulStack::Machine::EVM);
-		std::string machine = "EVM";
+		std::string machine = (m_options.output.targetMachine == yul::YulStack::Machine::EVM) ? "EVM" : "TVM";
 		sout() << std::endl << "======= " << src.first << " (" << machine << ") =======" << std::endl;
 
 		yul::YulStack& stack = yulStacks[src.first];
